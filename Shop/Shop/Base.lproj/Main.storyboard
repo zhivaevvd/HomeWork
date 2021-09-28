@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Shop" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Войти" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vrh-tP-fHL">
+                                <rect key="frame" x="20" y="144" width="335" height="36"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Логин" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="snn-ag-6m8">
+                                <rect key="frame" x="20" y="230" width="335" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JAo-L4-h1d" customClass="LoginTextField" customModule="Shop" customModuleProvider="target">
+                                <rect key="frame" x="20" y="250" width="335" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="3sn-1G-xoG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <view hidden="YES" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" id="ZeM-WB-wY0">
+                                <rect key="frame" x="20" y="300" width="335" height="1"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemPinkColor"/>
+                            </view>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Поле заполнено неверно" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBJ-w2-C8b">
+                                <rect key="frame" x="20" y="302" width="335" height="14.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Пароль" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PYr-36-Mer">
+                                <rect key="frame" x="20" y="326.33333333333331" width="335" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wNS-Kl-g7s" customClass="PasswordTextField" customModule="Shop" customModuleProvider="target">
+                                <rect key="frame" x="20" y="351.33333333333331" width="335" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="gLd-qi-oEt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="test:" destination="Trr-jn-uK5" eventType="touchDown" id="gTv-W0-uqF"/>
+                                </connections>
+                            </textField>
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hIn-ju-lU2">
+                                <rect key="frame" x="20" y="398" width="335" height="0.66666666666666663"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                            </view>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Поле заполнено неверно" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u2R-80-sd2">
+                                <rect key="frame" x="16" y="403" width="335" height="12"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="12" id="Hki-Qc-nIZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Aab-8e-RJh">
+                                <rect key="frame" x="16" y="451" width="343" height="68"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="73Q-24-lGE" customClass="SignInButton" customModule="Shop" customModuleProvider="target">
+                                        <rect key="frame" x="6" y="12" width="331" height="45"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Войти"/>
+                                        <connections>
+                                            <action selector="loginBtnClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="40j-zt-LRU"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="JAo-L4-h1d" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="0v3-wA-x60"/>
+                            <constraint firstItem="snn-ag-6m8" firstAttribute="top" secondItem="Vrh-tP-fHL" secondAttribute="bottom" constant="50" id="1Qv-8K-5kg"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sBJ-w2-C8b" secondAttribute="trailing" constant="20" id="5IY-8z-Vh8"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JAo-L4-h1d" secondAttribute="trailing" constant="20" id="F7V-2I-bm8"/>
+                            <constraint firstItem="PYr-36-Mer" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="H6P-OZ-UA2"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Vrh-tP-fHL" secondAttribute="trailing" constant="20" id="Ilw-IC-jUy"/>
+                            <constraint firstItem="JAo-L4-h1d" firstAttribute="top" secondItem="snn-ag-6m8" secondAttribute="bottom" constant="5" id="KDL-rH-WZx"/>
+                            <constraint firstItem="sBJ-w2-C8b" firstAttribute="top" secondItem="ZeM-WB-wY0" secondAttribute="bottom" constant="1" id="Sc4-ff-bay"/>
+                            <constraint firstItem="sBJ-w2-C8b" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="TSK-zy-bAq"/>
+                            <constraint firstItem="u2R-80-sd2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="U7U-Fc-fPd"/>
+                            <constraint firstItem="Vrh-tP-fHL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="WKW-qk-gD1"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="PYr-36-Mer" secondAttribute="trailing" constant="20" id="WUD-bo-77T"/>
+                            <constraint firstItem="u2R-80-sd2" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="403" id="a9s-Zp-18V"/>
+                            <constraint firstItem="wNS-Kl-g7s" firstAttribute="top" secondItem="PYr-36-Mer" secondAttribute="bottom" constant="10" id="brT-Kn-Zvr"/>
+                            <constraint firstItem="Vrh-tP-fHL" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="c7j-Zr-lIW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ZeM-WB-wY0" secondAttribute="trailing" constant="4" id="dLZ-OY-POc"/>
+                            <constraint firstItem="wNS-Kl-g7s" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="dhD-bS-zQ2"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wNS-Kl-g7s" secondAttribute="trailing" constant="20" id="jkq-Pu-5DL"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="u2R-80-sd2" secondAttribute="trailing" constant="24" id="mOZ-ML-dO3"/>
+                            <constraint firstItem="snn-ag-6m8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="r91-dn-UsT"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="snn-ag-6m8" secondAttribute="trailing" constant="20" id="sZK-yv-ZOj"/>
+                            <constraint firstItem="PYr-36-Mer" firstAttribute="top" secondItem="sBJ-w2-C8b" secondAttribute="bottom" constant="10" id="uM9-sI-mRC"/>
+                            <constraint firstItem="ZeM-WB-wY0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="4" id="wg1-fv-qpr"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="loginErrorMessage" destination="sBJ-w2-C8b" id="Gyo-AT-zTr"/>
+                        <outlet property="loginLabel" destination="snn-ag-6m8" id="oqk-ox-XNh"/>
+                        <outlet property="loginMistView" destination="ZeM-WB-wY0" id="ISd-Ws-plZ"/>
+                        <outlet property="loginTF" destination="JAo-L4-h1d" id="E6c-E0-Ij4"/>
+                        <outlet property="passwordErrorMessage" destination="u2R-80-sd2" id="o1V-Jq-NIg"/>
+                        <outlet property="passwordLabel" destination="PYr-36-Mer" id="ykv-P7-PEy"/>
+                        <outlet property="passwordMistView" destination="hIn-ju-lU2" id="Mz4-eO-rDH"/>
+                        <outlet property="passwordTF" destination="wNS-Kl-g7s" id="TgZ-bw-8Vk"/>
+                        <outlet property="signInBtn" destination="73Q-24-lGE" id="A5v-vq-HeT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="Trr-jn-uK5" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-412" y="53.940886699507388"/>
+        </scene>
+    </scenes>
+    <designables>
+        <designable name="JAo-L4-h1d">
+            <size key="intrinsicContentSize" width="32" height="34"/>
+        </designable>
+        <designable name="wNS-Kl-g7s">
+            <size key="intrinsicContentSize" width="32" height="34"/>
+        </designable>
+    </designables>
+    <resources>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

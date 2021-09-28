@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2YP-a3-1Sj">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Tab Bar Controller-->
+        <scene sceneID="lqd-48-bcR">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5rh-4O-RmJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tabBarController storyboardIdentifier="TabBar" id="2YP-a3-1Sj" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="hXe-99-ktB"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JA0-8G-SQM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="KjJ-Su-F3d" kind="relationship" relationship="viewControllers" id="s6c-0S-2CR"/>
+                        <segue destination="dpa-Da-rL7" kind="relationship" relationship="viewControllers" id="5p2-pz-B12"/>
+                        <segue destination="ljL-kC-a1v" kind="relationship" relationship="viewControllers" id="W9T-cC-pIc"/>
+                    </connections>
+                </tabBarController>
+            </objects>
+            <point key="canvasLocation" x="-881" y="100"/>
+        </scene>
+        <!--Профиль-->
+        <scene sceneID="OaD-4M-H8z">
+            <objects>
+                <navigationController id="ljL-kC-a1v" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Профиль" image="person" catalog="system" id="0qP-9s-7i5"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rbF-Vg-LJN">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                            <color key="textColor" systemColor="labelColor"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="h1q-mG-ovd" kind="relationship" relationship="rootViewController" id="8Uh-1c-QwJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bOT-iA-Lh0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="419" y="1062"/>
+        </scene>
+        <!--Профиль-->
+        <scene sceneID="UbA-xz-Key">
+            <objects>
+                <viewController id="h1q-mG-ovd" customClass="ProfileViewController" customModule="Shop" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gXg-Xm-8bw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KBE-yF-I3f" customClass="SignInButton" customModule="Shop" customModuleProvider="target">
+                                <rect key="frame" x="20" y="646" width="374" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="HHk-yL-G01"/>
+                                    <constraint firstAttribute="height" constant="45" id="xNH-Bt-IGO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Выйти"/>
+                                <connections>
+                                    <action selector="logOut:" destination="h1q-mG-ovd" eventType="touchUpInside" id="u4E-He-oMV"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="1ne-i8-iUn"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="KBE-yF-I3f" firstAttribute="leading" secondItem="gXg-Xm-8bw" secondAttribute="leadingMargin" id="CvV-6c-uvV"/>
+                            <constraint firstItem="KBE-yF-I3f" firstAttribute="top" secondItem="1ne-i8-iUn" secondAttribute="top" constant="558" id="V5n-A2-eDE"/>
+                            <constraint firstItem="KBE-yF-I3f" firstAttribute="trailing" secondItem="gXg-Xm-8bw" secondAttribute="trailingMargin" id="hV6-M8-5bW"/>
+                            <constraint firstItem="1ne-i8-iUn" firstAttribute="bottom" secondItem="KBE-yF-I3f" secondAttribute="bottom" constant="122" id="qs6-O7-xs2"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Профиль" id="gr1-Ci-1GD"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NDb-ZP-tWZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1262" y="1061"/>
+        </scene>
+        <!--Каталог-->
+        <scene sceneID="vSd-mw-Eo5">
+            <objects>
+                <navigationController id="dpa-Da-rL7" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Каталог" image="magnifyingglass" catalog="system" id="r4o-6n-n8o"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="548-MX-ERe">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="QTp-ff-53x" kind="relationship" relationship="rootViewController" id="cps-cH-dPC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WVQ-ev-07J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="419" y="-344"/>
+        </scene>
+        <!--Каталог-->
+        <scene sceneID="uCj-xU-vzP">
+            <objects>
+                <viewController id="QTp-ff-53x" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1CV-Qs-2d1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="ykg-NI-WdJ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Каталог" id="Wyy-EX-mk6"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UHV-Y0-dv0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1191" y="-344"/>
+        </scene>
+        <!--Корзина-->
+        <scene sceneID="9Yu-e4-0Du">
+            <objects>
+                <viewController id="KjJ-Su-F3d" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HyF-22-K6i">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="D9V-RV-1cl"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Корзина" image="cart" catalog="system" id="55f-In-Rou"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ppO-Np-Qd0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="419" y="346"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="cart" catalog="system" width="128" height="102"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="person" catalog="system" width="128" height="117"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
