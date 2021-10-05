@@ -23,12 +23,26 @@ class LoginTextField: UITextField {
     func setup() {
         backgroundColor = .systemGray5
         placeholder = "Логин"
+        
+        self.addTarget(self, action: #selector(isLoginTFValid), for: .allEditingEvents)
     }
     
     func isValid(email: String) -> Bool {
         let regex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}"
         
         return NSPredicate(format: "SELF MATCHES %@", regex).evaluate(with: email)
+    }
+    
+    @objc func isLoginTFValid() {
+        guard let email = self.text else {
+            return
+        }
+        
+        if isValid(email: email) {
+            self.backgroundColor = .green
+        } else {
+            self.backgroundColor = .red
+        }
     }
     
 }

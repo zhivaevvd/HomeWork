@@ -38,30 +38,45 @@ class PasswordTextField: UITextField {
         rightView = showPass
         
         showPass.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        
+        self.addTarget(self, action: #selector(isPassTFValid), for: .allEditingEvents)
     }
     
     @objc func buttonAction() {
         isSecureTextEntry.toggle()
-        
+
         if let existingText = text, isSecureTextEntry {
             deleteBackward()
-            
+
             if let textRange = textRange(from: beginningOfDocument, to: endOfDocument) {
                 replace(textRange, withText: existingText)
             }
         }
-        
+
         if let existingSelectedTextRange = selectedTextRange {
             selectedTextRange = nil
             selectedTextRange = existingSelectedTextRange
         }
     }
-    
+
     func isValid(pass: String) -> Bool {
         if pass.count == 0 || pass.count < 6 {
             return false
         } else {
             return true
+        }
+    }
+    
+    @objc func isPassTFValid() {
+        guard let pass = self.text
+        else {
+            return
+        }
+        
+        if isValid(pass: pass) {
+            self.backgroundColor = .green
+        } else {
+            self.backgroundColor = .red
         }
     }
     
