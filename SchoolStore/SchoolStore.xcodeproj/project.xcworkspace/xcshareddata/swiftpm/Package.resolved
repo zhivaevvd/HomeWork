@@ -1,0 +1,34 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "KeyboardManager",
+        "repositoryURL": "https://github.com/alphatroya/KeyboardManager",
+        "state": {
+          "branch": null,
+          "revision": "110b1abb66a5ce4c4b6fc8c8c9ab65c8d9db70d2",
+          "version": "1.6.1"
+        }
+      },
+      {
+        "package": "KeychainAccess",
+        "repositoryURL": "https://github.com/kishikawakatsumi/KeychainAccess",
+        "state": {
+          "branch": null,
+          "revision": "84e546727d66f1adc5439debad16270d0fdd04e7",
+          "version": "4.2.2"
+        }
+      },
+      {
+        "package": "TTGSnackbar",
+        "repositoryURL": "https://github.com/zekunyan/TTGSnackbar",
+        "state": {
+          "branch": null,
+          "revision": "a9a22eba7471d02abdd1f355baea98ec547de0ae",
+          "version": "1.10.5"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
