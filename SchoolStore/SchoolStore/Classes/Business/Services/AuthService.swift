@@ -22,7 +22,7 @@ final class AuthServiceImpl: AuthService {
 
     // MARK: Internal
 
-    typealias Authenticateed = DataResponse<UserResponse>
+    typealias Authenticateed = DataResponse<AuthResponse>
 
     func authenticate(user: String, with password: String, completion: ((Result<String, Error>) -> Void)?) {
         networkProvider.mock(UserRequest.login(user: user, password: password)) { [weak self] (result: Result<Authenticateed, Error>) in

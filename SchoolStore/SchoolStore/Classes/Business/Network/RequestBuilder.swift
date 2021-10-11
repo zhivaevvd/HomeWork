@@ -40,6 +40,36 @@ final class RequestBuilderImpl: RequestBuilder {
         return authenticate(requestTarget, request: &request)
     }
 
+    // MARK: Internal
+
+    //
+    // NOTE:
+    //
+    // You can use here dicioonary of type [String: Any] as method's `data` argument or any data, that implements
+    // `Encodable` protocol. Maybe, something like
+    //
+    // struct LoginPayload: Encodable {
+    //     let login: String
+    //     let password: String
+    // }
+    //
+    // RequestBuilderImpl.encode(LoginPayload(...))
+    //
+    static func encode<T: Encodable>(
+        _ data: T,
+        encoderKeyEncodingStrategy: JSONEncoder.KeyEncodingStrategy = .useDefaultKeys,
+        encoderDateEncodingStrategy: JSONEncoder.DateEncodingStrategy = .iso8601
+    ) -> Data? {
+        if let json = data as? [String: Any] {
+            return try? JSONSerialization.data(withJSONObject: json, options: [])
+        } else {
+            let encoder = JSONEncoder()
+            encoder.keyEncodingStrategy = encoderKeyEncodingStrategy
+            encoder.dateEncodingStrategy = encoderDateEncodingStrategy
+            return try? encoder.encode(data)
+        }
+    }
+
     // MARK: Private
 
     private let dataService: DataService
@@ -68,19 +98,4 @@ final class RequestBuilderImpl: RequestBuilder {
         }
         return request
     }
-    
-    static func encode<T: Encodable>(
-             _ data: T,
-             encoderKeyEncodingStrategy: JSONEncoder.KeyEncodingStrategy = .useDefaultKeys,
-             encoderDateEncodingStrategy: JSONEncoder.DateEncodingStrategy = .iso8601
-         ) -> Data? {
-             if let json = data as? [String: Any] {
-                 return try? JSONSerialization.data(withJSONObject: json, options: [])
-             } else {
-                 let encoder = JSONEncoder()
-                 encoder.keyEncodingStrategy = encoderKeyEncodingStrategy
-                 encoder.dateEncodingStrategy = encoderDateEncodingStrategy
-                 return try? encoder.encode(data)
-             }
-         }
 }

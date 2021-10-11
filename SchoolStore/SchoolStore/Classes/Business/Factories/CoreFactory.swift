@@ -9,21 +9,11 @@ enum CoreFactory {
 
     static let networkProvider: NetworkProvider = NetworkProviderImpl(requestBuilder: requestBuilder)
 
+    static let snacker: Snacker = SnackerImpl()
+
     static let dataService: DataService = DataServiceImpl()
 
     static func buildAuthService() -> AuthService {
         AuthServiceImpl(networkProvider: Self.networkProvider, dataService: Self.dataService)
-    }
-    
-    static func buildHistoryService() -> HistoryService {
-        HistoryServiceImpl()
-    }
-    
-    static func buildCatalogService() -> CatalogService {
-        CatalogServiceIml()
-    }
-    
-    static func buildProfileService() -> ProfileService {
-        ProfileServiceIml()
     }
 }

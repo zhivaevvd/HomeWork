@@ -6,8 +6,8 @@ import Foundation
 
 enum UserRequest: Request {
     case login(user: String, password: String)
-    case user
-    case changeProfile(name: String, surname: String, occupation: String, avatar: String)
+    case userGet
+    case userChange(name: String, surname: String, occupation: String, avatar: String)
 
     // MARK: Internal
 
@@ -15,7 +15,9 @@ enum UserRequest: Request {
         switch self {
         case .login:
             return "user/signin"
-        case .user, .changeProfile:
+        case .userGet:
+            return "user"
+        case .userChange:
             return "user"
         }
     }
@@ -24,41 +26,50 @@ enum UserRequest: Request {
         switch self {
         case .login:
             return .put
-        case .user:
+        case .userGet:
             return .get
-        case .changeProfile:
+        case .userChange:
             return .patch
         }
     }
-    
+
     var body: Data? {
-             switch self {
-             case let .login(user, password):
-                return RequestBuilderImpl.encode(["login": user, "password": password])
-             case let .changeProfile(name, surname, occupation, avatar):
-                return RequestBuilderImpl.encode(["name": name, "surname": surname, "occupation": occupation, "avatar": avatar])
-             default:
-                return nil
-             }
-         }
+        switch self {
+        case let .login(user, password):
+            return RequestBuilderImpl.encode(["login": user, "password": password])
+        case let .userChange(name, surname, occupation, avatar):
+            return RequestBuilderImpl.encode(["name": name, "surname": surname, "occupation": occupation, "avatar": avatar])
+        default:
+            return nil
+        }
+    }
 
     var mock: Data? {
         switch self {
-        case .login:
-            guard let path = Bundle.main.path(forResource: "auth", ofType: "json"),
+        case let .login(user, password):
+            if password != "pass", user != "user" {
+                guard let path = Bundle.main.path(forResource: "authFailed", ofType: "json"),
+                      let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
+                else {
+                    return nil
+                }
+                return data
+            } else {
+                guard let path = Bundle.main.path(forResource: "auth", ofType: "json"),
+                      let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
+                else {
+                    return nil
+                }
+                return data
+            }
+        case .userGet:
+            guard let path = Bundle.main.path(forResource: "getProfile", ofType: "json"),
                   let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
             else {
                 return nil
             }
             return data
-        case .user:
-            guard let path = Bundle.main.path(forResource: "user", ofType: "json"),
-                  let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
-            else {
-                return nil
-            }
-            return data
-        case .changeProfile:
+        case .userChange:
             guard let path = Bundle.main.path(forResource: "changeProfile", ofType: "json"),
                   let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
             else {

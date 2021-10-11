@@ -2,3 +2,6 @@
 "auth.login" = "Логин";
 "auth.password" = "Пароль";
 "auth.action" = "Войти";
+
+"common.error" = "Что-то пошло не так";
+"common.emptyField" = "Поле пустое";

@@ -3,7 +3,6 @@
 //
 
 import UIKit
-import TTGSnackbar
 
 class ProfileVC: UIViewController {
     // MARK: Lifecycle
@@ -25,23 +24,11 @@ class ProfileVC: UIViewController {
      */
 
     // MARK: Internal
-    
-    func setup(with profileService: ProfileService) {
-        self.profileService = profileService
-    }
+
+    var dataService: DataService?
 
     @IBAction func logoutPressed(_: Any) {
-        // TODO: Add service call here
-        
-        SnackbarFactory.buildLogOutSnackbar().show()
-        
-//        let dataService = DataServiceImpl()
-//        dataService.appState.accessToken = nil
-//
-//        UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.rootViewController = VCFactory.buildAuthVC()
+        dataService?.appState.accessToken = nil
+        UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.rootViewController = VCFactory.buildAuthVC()
     }
-    
-    // MARK: Private
-    
-    private var profileService: ProfileService?
 }

@@ -22,23 +22,23 @@ internal enum StoryboardScene {
   internal enum Catalog: StoryboardType {
     internal static let storyboardName = "Catalog"
 
-    internal static let initialScene = InitialSceneType<CatalogVC>(storyboard: Catalog.self)
+    internal static let initialScene = InitialSceneType<UIKit.UINavigationController>(storyboard: Catalog.self)
 
-    internal static let catalog = SceneType<CatalogVC>(storyboard: Catalog.self, identifier: "Catalog")
+    internal static let catalog = SceneType<UIKit.UINavigationController>(storyboard: Catalog.self, identifier: "Catalog")
   }
   internal enum History: StoryboardType {
     internal static let storyboardName = "History"
 
-    internal static let initialScene = InitialSceneType<HistoryVC>(storyboard: History.self)
+    internal static let initialScene = InitialSceneType<UIKit.UINavigationController>(storyboard: History.self)
 
-    internal static let history = SceneType<HistoryVC>(storyboard: History.self, identifier: "History")
+    internal static let history = SceneType<UIKit.UINavigationController>(storyboard: History.self, identifier: "History")
   }
   internal enum Profile: StoryboardType {
     internal static let storyboardName = "Profile"
 
-    internal static let initialScene = InitialSceneType<ProfileVC>(storyboard: Profile.self)
+    internal static let initialScene = InitialSceneType<UIKit.UINavigationController>(storyboard: Profile.self)
 
-    internal static let profile = SceneType<ProfileVC>(storyboard: Profile.self, identifier: "Profile")
+    internal static let profile = SceneType<UIKit.UINavigationController>(storyboard: Profile.self, identifier: "Profile")
   }
   internal enum TabBar: StoryboardType {
     internal static let storyboardName = "TabBar"

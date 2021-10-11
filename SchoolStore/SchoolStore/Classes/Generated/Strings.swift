@@ -23,6 +23,13 @@ internal enum L10n {
     /// Пароль
     internal static let password = L10n.tr("Localizable", "auth.password")
   }
+
+  internal enum Common {
+    /// Поле пустое
+    internal static let emptyField = L10n.tr("Localizable", "common.emptyField")
+    /// Что-то пошло не так
+    internal static let error = L10n.tr("Localizable", "common.error")
+  }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces

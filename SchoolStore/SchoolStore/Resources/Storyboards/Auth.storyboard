@@ -16,41 +16,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="ME9-Mw-cj0">
-                                <rect key="frame" x="20" y="344.5" width="374" height="217"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ME9-Mw-cj0">
+                                <rect key="frame" x="20" y="304.5" width="374" height="282"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lul-RA-MSP">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gxd-1Z-Zcc" customClass="LoginTextField" customModule="SchoolStore" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="31.5" width="374" height="44"/>
-                                        <color key="backgroundColor" white="0.87015289514243199" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <view contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="751" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vWC-M3-qtf" customClass="InputField" customModule="SchoolStore" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="54"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="gW5-sD-QO5"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="54" id="Ek3-Y9-Hmh"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWh-1u-ZLq">
-                                        <rect key="frame" x="0.0" y="86.5" width="374" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QdN-7q-CYl" customClass="PasswordTextField" customModule="SchoolStore" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="118" width="374" height="44"/>
-                                        <color key="backgroundColor" white="0.87015289510000005" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSecure" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Login"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="751" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iZ5-QV-Nuc" customClass="InputField" customModule="SchoolStore" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="64" width="374" height="164"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="ZoI-Nv-enf"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="54" id="eE3-3R-TVJ"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                    </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UAy-9p-oPb">
-                                        <rect key="frame" x="0.0" y="173" width="374" height="44"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSecure" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Password"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UAy-9p-oPb">
+                                        <rect key="frame" x="0.0" y="238" width="374" height="44"/>
                                         <color key="backgroundColor" systemColor="systemBlueColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="01d-Bu-uMr"/>
@@ -74,10 +66,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="authLabel" destination="lul-RA-MSP" id="5eK-nC-Gvo"/>
-                        <outlet property="loginField" destination="gxd-1Z-Zcc" id="K6c-Cs-stn"/>
-                        <outlet property="passwordField" destination="QdN-7q-CYl" id="Oa6-SR-wNz"/>
-                        <outlet property="passwordLabel" destination="hWh-1u-ZLq" id="cxS-Av-e8K"/>
+                        <outlet property="loginField" destination="vWC-M3-qtf" id="mCd-L5-Red"/>
+                        <outlet property="passwordField" destination="iZ5-QV-Nuc" id="SyC-OL-CnO"/>
                         <outlet property="signInButton" destination="UAy-9p-oPb" id="Vls-2t-sHx"/>
                     </connections>
                 </viewController>
@@ -86,14 +76,6 @@
             <point key="canvasLocation" x="90" y="119"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="QdN-7q-CYl">
-            <size key="intrinsicContentSize" width="59" height="34"/>
-        </designable>
-        <designable name="gxd-1Z-Zcc">
-            <size key="intrinsicContentSize" width="32" height="34"/>
-        </designable>
-    </designables>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -2,12 +2,12 @@
   "object": {
     "pins": [
       {
-        "package": "KeyboardManager",
-        "repositoryURL": "https://github.com/alphatroya/KeyboardManager",
+        "package": "auto-layout-sugar-ios",
+        "repositoryURL": "https://github.com/Heads-and-Hands/auto-layout-sugar-ios",
         "state": {
           "branch": null,
-          "revision": "110b1abb66a5ce4c4b6fc8c8c9ab65c8d9db70d2",
-          "version": "1.6.1"
+          "revision": "1b57b50cf4e6b7715634df41a565b6d94637ca3d",
+          "version": "1.0.6"
         }
       },
       {
