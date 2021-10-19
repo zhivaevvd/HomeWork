@@ -56,6 +56,7 @@ final class HistoryVC: UIViewController {
     static let historyCellReuseId: String = HistoryCell.description()
     
     var items: [String] = []
+    
 }
 
 extension HistoryVC: UITableViewDelegate, UITableViewDataSource {
@@ -96,3 +97,4 @@ extension HistoryVC: UITableViewDelegate, UITableViewDataSource {
         }
     }
 }
+

@@ -21,9 +21,20 @@ final class ProductCell: UITableViewCell {
 
     // MARK: Internal
 
-    var model: String? {
+    var model: Product? {
         didSet {
-            titleLabel.text = model
+            titleLabel.text = model?.title
+            descriptionLabel.text = model?.department
+            
+            guard let price = model?.price else {
+                return
+            }
+            
+            let url = URL(string: (model?.images.first)!)
+            let data = try? Data(contentsOf: url!)
+            contentImageView.image = UIImage(data: data!)
+           
+            priceLabel.text = String(price.formattedWithSeparator) + " ₽"
         }
     }
 
@@ -74,38 +85,52 @@ final class ProductCell: UITableViewCell {
         contentView.addSubview(addToCartButton)
         contentView.addSubview(separatorView)
 
-        contentImageView.image = Asset.itemPlaceholder.image
+        //contentImageView.image = Asset.itemPlaceholder.image
         contentImageView
             .top(16).left(16).bottom(16).width(112).height(112)
 
         titleLabel
             .top(16).left(to: .right(16), of: contentImageView)
             .right(16)
-        titleLabel.font = UIFont(name: "Roboto-Regular", size: 14)
-        titleLabel.text = "Some text"
-        
-        descriptionLabel.text = "Some text"
-        descriptionLabel.font = UIFont(name: "Roboto-Regular", size: 12)
+        titleLabel.numberOfLines = 5
+        titleLabel.font = UIFont(name: "Roboto-Regular", size: 16)
+        titleLabel.textColor = .black
 
         descriptionLabel
             .top(to: .bottom, of: titleLabel)
             .left(to: .right(16), of: contentImageView).right(16)
-
-        priceLabel.font = UIFont(name: "Roboto-Regular", size: 14)
-        priceLabel.text = "9000"
+        descriptionLabel.font = UIFont(name: "Roboto-Regular", size: 14)
+        descriptionLabel.textColor = UIColor.systemGray
 
         priceLabel
-            .bottom(31)
+            .bottom(21)
             .left(to: .right(16), of: contentImageView)
+        priceLabel.font = UIFont(name: "Roboto-Regular", size: 16)
+        
         addToCartButton
             .top(to: .top, of: priceLabel)
             .bottom(31)
             .left(to: .right(16), of: priceLabel).right(16)
-        addToCartButton.setTitleColor(.systemBlue, for: .normal)
-        addToCartButton.setImage(UIImage(systemName: "cart"), for: .normal)
         addToCartButton.setTitle("Купить", for: .normal)
+        addToCartButton.setTitleColor(UIColor.systemBlue, for: .normal)
+        addToCartButton.setImage(UIImage.init(systemName: "cart"), for: .normal)
 
         separatorView.backgroundColor = Asset.fieldBacground.color
         separatorView.bottom().left(16).right(16).height(1)
+    }
+}
+
+extension Formatter {
+    static let withSeparator: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.groupingSeparator = " "
+        formatter.numberStyle = .decimal
+        return formatter
+    }()
+}
+
+extension Int {
+    var formattedWithSeparator: String {
+        return Formatter.withSeparator.string(for: self) ?? ""
     }
 }

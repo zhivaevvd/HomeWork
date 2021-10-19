@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0St-c2-Rg5">
-    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
@@ -14,11 +14,11 @@
             <objects>
                 <viewController title="History" id="Y6W-OH-hqX" customClass="HistoryVC" customModule="SchoolStore" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3eZ-Zc-3Py">
-                                <rect key="frame" x="0.0" y="88" width="375" height="32"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="N25-XO-e1Y">
+                                <rect key="frame" x="0.0" y="88" width="414" height="32"/>
                                 <segments>
                                     <segment title="Все"/>
                                     <segment title="Активные"/>
@@ -28,19 +28,19 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="3eZ-Zc-3Py" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Yc9-sK-6Ud"/>
-                            <constraint firstItem="3eZ-Zc-3Py" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="cGm-1U-tdc"/>
-                            <constraint firstItem="3eZ-Zc-3Py" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="kg8-v7-ev2"/>
+                            <constraint firstItem="N25-XO-e1Y" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="QwI-Py-Rm2"/>
+                            <constraint firstItem="N25-XO-e1Y" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="TIP-cb-fre"/>
+                            <constraint firstItem="N25-XO-e1Y" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="g4P-US-KMe"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="История" id="mwp-l5-n5u"/>
+                    <navigationItem key="navigationItem" id="mwp-l5-n5u"/>
                     <connections>
-                        <outlet property="segmentedControl" destination="3eZ-Zc-3Py" id="oOf-mA-OIu"/>
+                        <outlet property="segmentedControl" destination="N25-XO-e1Y" id="st6-Qq-Mdc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="999.20000000000005" y="93.842364532019715"/>
+            <point key="canvasLocation" x="1000.0000000000001" y="94.419642857142847"/>
         </scene>
         <!--History-->
         <scene sceneID="DbY-QG-JOJ">
@@ -50,7 +50,7 @@
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xMU-LM-OxX">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

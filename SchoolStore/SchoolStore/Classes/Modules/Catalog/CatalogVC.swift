@@ -11,24 +11,35 @@ import UIKit
 final class CatalogVC: UIViewController {
     // MARK: Lifecycle
 
+    var items: [Product] = []
+    private var item: Product?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(tableView)
         tableView.top().left().right().bottom()
 
-        DispatchQueue.main.asyncAfter(deadline: .now()) { [weak self] in
-            self?.items = [
-                "Ботинок", "Шлепанец", "Телогрейка", "Трофейный ремень Вермахта", "Кожанка"
-            ]
-            self?.tableView.reloadData()
-        }
+        catalogService?.getListOfProducts(completion: {
+            result in
+            switch result {
+            case let .success(products):
+                self.items = products
+                self.tableView.reloadData()
+            case .failure(_):
+                break
+            }
+        })
+
+    }
+    
+    func setup(with catalogService: CatalogService, _ snacker: Snacker) {
+        self.catalogService = catalogService
+        self.snacker = snacker
     }
 
     // MARK: Internal
 
     static let productCellReuseId: String = ProductCell.description()
-
-    var items: [String] = []
 
     // MARK: Private
 
@@ -44,6 +55,10 @@ final class CatalogVC: UIViewController {
         )
         return tableView
     }()
+    
+    private var catalogService: CatalogService?
+    
+    private var snacker: Snacker?
 }
 
 // MARK: UITableViewDelegate, UITableViewDataSource
@@ -65,6 +80,11 @@ extension CatalogVC: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         cell.model = items[indexPath.row]
+        item = items[indexPath.row]
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.rootViewController = VCFactory.buildDetailInfoVC(product: item!)
     }
 }

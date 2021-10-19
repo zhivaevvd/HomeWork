@@ -2,7 +2,7 @@
 //  HistoryCell.swift
 //  SchoolStore
 //
-//  Created by a1 on 11.10.2021.
+//  Created by a1 on 14.10.2021.
 //
 
 import Foundation
@@ -102,4 +102,5 @@ final class HistoryCell: UITableViewCell {
         separatorView.backgroundColor = UIColor.gray
     }
 }
+
 

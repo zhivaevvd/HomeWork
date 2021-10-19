@@ -12,6 +12,11 @@ enum VCFactory {
         vc.setup(with: authService, snacker)
         return vc
     }
+    
+    static func buildDetailInfoVC(product: Product) -> UIViewController? {
+        let vc = StoryboardScene.DetailInfo.initialScene.instantiate()
+        return vc
+    }
 
     static func buildTabBarVC() -> UIViewController? {
         let tabBarVC = StoryboardScene.TabBar.initialScene.instantiate()
@@ -24,8 +29,10 @@ enum VCFactory {
                 vc.dataService = CoreFactory.dataService
             case is HistoryVC:
                 break
-            case is CatalogVC:
-                break
+            case let vc as CatalogVC:
+                let catalogService = CoreFactory.buildCatalogService()
+                let snacker = CoreFactory.snacker
+                vc.setup(with: catalogService, snacker)
             default:
                 break
             }

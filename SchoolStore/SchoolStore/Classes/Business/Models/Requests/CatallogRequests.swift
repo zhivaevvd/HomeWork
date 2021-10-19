@@ -5,7 +5,7 @@
 import Foundation
 
 enum CatalogRequest: Request {
-    case listOfProducts(fields: [String], limit: String, offset: String)
+    case listOfProducts
     case detailInfo
 
     // MARK: Internal
