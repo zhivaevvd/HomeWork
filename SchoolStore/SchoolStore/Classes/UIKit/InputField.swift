@@ -1,4 +1,4 @@
-// \HxH School iOS Pass
+// HxH School iOS Pass
 // Copyright © 2021 Heads and Hands. All rights reserved.
 //
 
@@ -32,6 +32,13 @@ final class InputField: UIView, InputFieldProtocol {
     }
 
     // MARK: Internal
+
+    private(set) lazy var textField: UITextField = {
+        let field = UITextField()
+        field.autocapitalizationType = .none
+        field.translatesAutoresizingMaskIntoConstraints = false
+        return field
+    }()
 
     @IBInspectable
     var title: String? {
@@ -72,7 +79,7 @@ final class InputField: UIView, InputFieldProtocol {
 
     // MARK: Private
 
-    private let normalColor: UIColor = Asset.fieldText.color.withAlphaComponent(0.87)
+    private let normalColor: UIColor = Asset.textPrimary.color.withAlphaComponent(0.87)
 
     private let errorColor: UIColor = Asset.fieldError.color
 
@@ -86,12 +93,6 @@ final class InputField: UIView, InputFieldProtocol {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
-    }()
-
-    private lazy var textField: UITextField = {
-        let field = UITextField()
-        field.translatesAutoresizingMaskIntoConstraints = false
-        return field
     }()
 
     private lazy var errorLabel: UILabel = {

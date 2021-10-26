@@ -1,12 +1,12 @@
-// \HxH School iOS Pass
+// HxH School iOS Pass
 // Copyright © 2021 Heads and Hands. All rights reserved.
 //
 
 import Foundation
 
 enum CatalogRequest: Request {
-    case listOfProducts
-    case detailInfo
+    case listOfProducts(offset: Int, limit: Int)
+    case detailInfo(String)
 
     // MARK: Internal
 
@@ -14,29 +14,45 @@ enum CatalogRequest: Request {
         switch self {
         case .listOfProducts:
             return "products"
-        case .detailInfo:
-            return "products/{product_id}"
+        case let .detailInfo(id):
+            return "products/\(id)"
         }
     }
 
     var method: RequestMethod {
         switch self {
-        case .listOfProducts:
-            return .get
-        case .detailInfo:
+        case .listOfProducts, .detailInfo:
             return .get
         }
     }
 
     var mock: Data? {
         switch self {
-        case .listOfProducts:
-            guard let path = Bundle.main.path(forResource: "listOfProducts", ofType: "json"),
-                  let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
-            else {
-                return nil
+        case let .listOfProducts(offset, _):
+            if offset == 0 {
+                guard let path = Bundle.main.path(forResource: "listOfProducts", ofType: "json"),
+                      let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
+                else {
+                    return nil
+                }
+                return data
+
+            } else if 12 ... 24 ~= offset {
+                guard let path = Bundle.main.path(forResource: "listOfProducts2", ofType: "json"),
+                      let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
+                else {
+                    return nil
+                }
+                return data
+
+            } else {
+                guard let path = Bundle.main.path(forResource: "listOfProducts3", ofType: "json"),
+                      let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
+                else {
+                    return nil
+                }
+                return data
             }
-            return data
         case .detailInfo:
             guard let path = Bundle.main.path(forResource: "detailsInfo", ofType: "json"),
                   let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)

@@ -24,11 +24,28 @@ internal enum L10n {
     internal static let password = L10n.tr("Localizable", "auth.password")
   }
 
+  internal enum Catalog {
+    /// Купить
+    internal static let buy = L10n.tr("Localizable", "catalog.buy")
+    /// Каталог
+    internal static let title = L10n.tr("Localizable", "catalog.title")
+  }
+
+  internal enum Checkout {
+    /// Оформить заказ
+    internal static let title = L10n.tr("Localizable", "checkout.title")
+  }
+
   internal enum Common {
     /// Поле пустое
     internal static let emptyField = L10n.tr("Localizable", "common.emptyField")
     /// Что-то пошло не так
     internal static let error = L10n.tr("Localizable", "common.error")
+  }
+
+  internal enum History {
+    /// Мои заказы
+    internal static let title = L10n.tr("Localizable", "history.title")
   }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length

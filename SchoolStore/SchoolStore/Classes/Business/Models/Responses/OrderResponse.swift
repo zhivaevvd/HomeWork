@@ -2,15 +2,11 @@
 //  OrderResponse.swift
 //  SchoolStore
 //
-//  Created by a1 on 14.10.2021.
+//  Created by a1 on 21.10.2021.
 //
 
 import Foundation
 
-struct ArrangeOrderResponse: Decodable {
-    let order: Order
-}
-
-struct GetListOfOrdersResponse: Decodable {
+struct OrderResponse: Decodable {
     let orders: [Order]
 }

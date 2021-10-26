@@ -26,10 +26,8 @@ internal enum StoryboardScene {
 
     internal static let catalog = SceneType<UIKit.UINavigationController>(storyboard: Catalog.self, identifier: "Catalog")
   }
-  internal enum DetailInfo: StoryboardType {
-    internal static let storyboardName = "DetailInfo"
-
-    internal static let initialScene = InitialSceneType<UIKit.UINavigationController>(storyboard: DetailInfo.self)
+  internal enum Checkout: StoryboardType {
+    internal static let storyboardName = "Checkout"
   }
   internal enum History: StoryboardType {
     internal static let storyboardName = "History"

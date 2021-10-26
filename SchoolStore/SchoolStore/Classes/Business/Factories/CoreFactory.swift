@@ -1,4 +1,4 @@
-// \HxH School iOS Pass
+// HxH School iOS Pass
 // Copyright © 2021 Heads and Hands. All rights reserved.
 //
 
@@ -16,8 +16,12 @@ enum CoreFactory {
     static func buildAuthService() -> AuthService {
         AuthServiceImpl(networkProvider: Self.networkProvider, dataService: Self.dataService)
     }
-    
+
     static func buildCatalogService() -> CatalogService {
-        CatalogServiceImpl(networkProvider: Self.networkProvider)
+        CatalogServiceImpl(networkProvider: Self.networkProvider, dataService: Self.dataService)
+    }
+    
+    static func buildHistoryService() -> HistoryService {
+        HistoryServiceImpl(networkProvider: Self.networkProvider, dataService: Self.dataService)
     }
 }

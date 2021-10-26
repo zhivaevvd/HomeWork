@@ -1,4 +1,4 @@
-// \HxH School iOS Pass
+// HxH School iOS Pass
 // Copyright © 2021 Heads and Hands. All rights reserved.
 //
 
@@ -6,7 +6,7 @@ import Foundation
 
 enum OrdersRequest: Request {
     case arrangeOrder(productId: String, size: String, quantity: String, house: String, apartment: String, etd: String)
-    case listOfOrders
+    case listOfOrders(offset: Int, limit: Int)
     case cancel
 
     // MARK: Internal
@@ -52,13 +52,23 @@ enum OrdersRequest: Request {
                 return nil
             }
             return data
-        case .listOfOrders:
-            guard let path = Bundle.main.path(forResource: "listOfOrders", ofType: "json"),
-                  let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
-            else {
-                return nil
+        case let .listOfOrders(offset, _):
+            if offset == 0 {
+                guard let path = Bundle.main.path(forResource: "listOfOrders", ofType: "json"),
+                      let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
+                else {
+                    return nil
+                }
+                return data
+            } else {
+                guard let path = Bundle.main.path(forResource: "listOfOrders2", ofType: "json"),
+                      let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
+                else {
+                    return nil
+                }
+                return data
             }
-            return data
+            
         case .cancel:
             guard let path = Bundle.main.path(forResource: "cancelOrder", ofType: "json"),
                   let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)

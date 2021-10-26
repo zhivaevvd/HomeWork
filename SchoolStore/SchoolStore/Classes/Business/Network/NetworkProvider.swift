@@ -1,4 +1,4 @@
-// \HxH School iOS Pass
+// HxH School iOS Pass
 // Copyright © 2021 Heads and Hands. All rights reserved.
 //
 
@@ -7,8 +7,28 @@ import Foundation
 // MARK: - NetworkProvider
 
 protocol NetworkProvider {
-    func mock<T: Decodable>(_ request: Request, completion: ((Result<T, Error>) -> Void)?)
-    func make<T: Decodable>(_ request: Request, completion: ((Result<T, Error>) -> Void)?)
+    func mock<T: Decodable>(_ request: Request, completion: ((Result<T, Error>) -> Void)?,
+                            keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy)
+    func make<T: Decodable>(_ request: Request, completion: ((Result<T, Error>) -> Void)?,
+                            keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy)
+}
+
+extension NetworkProvider {
+    func mock<T: Decodable>(
+        _ request: Request,
+        completion: ((Result<T, Error>) -> Void)?,
+        keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .convertFromSnakeCase
+    ) {
+        mock(request, completion: completion, keyDecodingStrategy: keyDecodingStrategy)
+    }
+
+    func make<T: Decodable>(
+        _ request: Request,
+        completion: ((Result<T, Error>) -> Void)?,
+        keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .convertFromSnakeCase
+    ) {
+        make(request, completion: completion, keyDecodingStrategy: keyDecodingStrategy)
+    }
 }
 
 // MARK: - NetworkProviderImpl
@@ -19,26 +39,24 @@ final class NetworkProviderImpl: NetworkProvider {
     init(requestBuilder: RequestBuilder) {
         self.requestBuilder = requestBuilder
         decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
     }
 
     // MARK: Internal
 
-    func mock<T: Decodable>(_ request: Request, completion: ((Result<T, Error>) -> Void)?) {
-        guard let data = request.mock else {
-            completion?(.failure(Errors.unknown))
-            return
-        }
-        if let response = try? decoder.decode(T.self, from: data) {
-            completion?(.success(response))
-        }
-        if let errorResponse = try? decoder.decode(ErrorResponse.self, from: data) {
-            completion?(.failure(Errors.failedResponse(message: errorResponse.message, fields: errorResponse.fields)))
-        } else {
-            completion?(.failure(Errors.unknown))
-        }
+    func mock<T: Decodable>(
+        _ request: Request,
+        completion: ((Result<T, Error>) -> Void)?,
+        keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .convertFromSnakeCase
+    ) {
+        serializeData(response: request.mock, completion: completion, keyDecodingStrategy: keyDecodingStrategy)
     }
 
-    func make<T: Decodable>(_ request: Request, completion: ((Result<T, Error>) -> Void)?) {
+    func make<T: Decodable>(
+        _ request: Request,
+        completion: ((Result<T, Error>) -> Void)?,
+        keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .convertFromSnakeCase
+    ) {
         guard let urlRequest = requestBuilder.build(request) else {
             return
         }
@@ -47,17 +65,7 @@ final class NetworkProviderImpl: NetworkProvider {
                 completion?(.failure(error))
                 return
             }
-            guard let self = self, let data = data else {
-                completion?(.failure(Errors.unknown))
-                return
-            }
-            if let response = try? self.decoder.decode(T.self, from: data) {
-                completion?(.success(response))
-            } else if let errorResponse = try? self.decoder.decode(ErrorResponse.self, from: data) {
-                completion?(.failure(Errors.failedResponse(message: errorResponse.message, fields: errorResponse.fields)))
-            } else {
-                completion?(.failure(Errors.unknown))
-            }
+            self?.serializeData(response: data, completion: completion, keyDecodingStrategy: keyDecodingStrategy)
         }
         task.resume()
     }
@@ -67,4 +75,23 @@ final class NetworkProviderImpl: NetworkProvider {
     private let decoder: JSONDecoder
 
     private let requestBuilder: RequestBuilder
+
+    private func serializeData<T: Decodable>(
+        response data: Data?,
+        completion: ((Result<T, Error>) -> Void)?,
+        keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .convertFromSnakeCase
+    ) {
+        guard let data = data else {
+            completion?(.failure(Errors.unknown))
+            return
+        }
+        decoder.keyDecodingStrategy = keyDecodingStrategy
+        if let response = try? decoder.decode(T.self, from: data) {
+            completion?(.success(response))
+        } else if let errorResponse = try? decoder.decode(ErrorResponse.self, from: data) {
+            completion?(.failure(Errors.failedResponse(message: errorResponse.message, fields: errorResponse.fields)))
+        } else {
+            completion?(.failure(Errors.unknown))
+        }
+    }
 }

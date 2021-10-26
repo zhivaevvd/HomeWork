@@ -1,16 +1,9 @@
-//
-//  CatalogResponse.swift
-//  SchoolStore
-//
-//  Created by a1 on 14.10.2021.
+// HxH School iOS Pass
+// Copyright © 2021 Heads and Hands. All rights reserved.
 //
 
 import Foundation
 
-struct GetListOfProductResponse: Decodable {
+struct CatalogResponse: Decodable {
     let products: [Product]
-}
-
-struct GetDetailInfoResponse: Decodable {
-    let product: Product
 }

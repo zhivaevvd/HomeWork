@@ -1,51 +1,57 @@
-//
-//  CatalogService.swift
-//  SchoolStore
-//
-//  Created by a1 on 14.10.2021.
+// HxH School iOS Pass
+// Copyright © 2021 Heads and Hands. All rights reserved.
 //
 
 import Foundation
-import UIKit
+
+// MARK: - CatalogService
 
 protocol CatalogService: AnyObject {
-    func getListOfProducts(completion: ((Result<[Product], Error>) -> Void)?)
+    func getCatalogItems(with offset: Int, limit: Int, completion: ((Result<[Product], Error>) -> Void)?)
+    func getProduct(with id: String, completion: ((Result<Product, Error>) -> Void)?)
 }
 
+// MARK: - CatalogServiceImpl
+
 final class CatalogServiceImpl: CatalogService {
-    
-    typealias catalog = DataResponse<GetListOfProductResponse>
-    
-//    func getListOfProducts(completion: ((Result<[Product], Error>) -> Void)?) {
-//        networkProvider.mock(CatalogRequest.listOfProducts, completion: {
-//            (result: Result<catalog, Error>) in
-//            switch result {
-//            case let .success(data):
-//                completion?(Result.success(data.data.products))
-//            case let .failure(error):
-//                completion?(Result.failure(error))
-//            }
-//        })
-//    }
-    
-    func getListOfProducts(completion: ((Result<[Product], Error>) -> Void)?) {
-        networkProvider.mock(CatalogRequest.listOfProducts, completion: {
-            (result: Result<catalog, Error>) in
+    // MARK: Lifecycle
+
+    init(networkProvider: NetworkProvider, dataService: DataService) {
+        self.networkProvider = networkProvider
+        self.dataService = dataService
+    }
+
+    // MARK: Internal
+
+    func getCatalogItems(with offset: Int, limit: Int, completion: ((Result<[Product], Error>) -> Void)?) {
+        networkProvider.mock(
+            CatalogRequest.listOfProducts(offset: offset, limit: limit)
+        ) { (result: Result<DataResponse<CatalogResponse>, Error>) in
             switch result {
             case .success:
-                completion?(result.map({ obj in obj.data.products }))
+                completion?(result.map(\.data.products))
             case let .failure(error):
                 completion?(Result.failure(error))
             }
-        })
+        }
     }
-    
-    
-    
-    init(networkProvider: NetworkProvider) {
-        self.networkProvider = networkProvider
+
+    func getProduct(with id: String, completion: ((Result<Product, Error>) -> Void)?) {
+        networkProvider.mock(
+            CatalogRequest.detailInfo(id)
+        ) { (result: Result<DataResponse<ProductResponse>, Error>) in
+            switch result {
+            case .success:
+                completion?(result.map(\.data.product))
+            case let .failure(error):
+                completion?(Result.failure(error))
+            }
+        }
     }
-    
+
+    // MARK: Private
+
     private let networkProvider: NetworkProvider
 
+    private let dataService: DataService
 }

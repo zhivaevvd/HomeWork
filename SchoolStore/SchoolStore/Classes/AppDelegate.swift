@@ -1,4 +1,4 @@
-// \HxH School iOS Pass
+// HxH School iOS Pass
 // Copyright © 2021 Heads and Hands. All rights reserved.
 //
 
@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         window?.rootViewController = initialVC
         window?.makeKeyAndVisible()
-
+        configureNavigationBar()
         return true
     }
 

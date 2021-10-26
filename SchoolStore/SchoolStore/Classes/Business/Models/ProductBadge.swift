@@ -1,24 +1,10 @@
-//
-//  ProductBadge.swift
-//  SchoolStore
-//
-//  Created by a1 on 14.10.2021.
+// HxH School iOS Pass
+// Copyright © 2021 Heads and Hands. All rights reserved.
 //
 
 import Foundation
 
-struct ProductBadge: Decodable {
-    
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        value = try container.decode(String.self, forKey: CodingKeys.value)
-        color = try container.decode(String.self, forKey: CodingKeys.value)
-    }
-    
-    enum CodingKeys: String, CodingKey {
-        case value, color
-    }
-    
+struct ProductBadge: Decodable, Hashable, Equatable {
     let value: String
     let color: String
 }

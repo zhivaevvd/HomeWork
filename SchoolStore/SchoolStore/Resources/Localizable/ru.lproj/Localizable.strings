@@ -5,3 +5,10 @@
 
 "common.error" = "Что-то пошло не так";
 "common.emptyField" = "Поле пустое";
+
+"catalog.title" = "Каталог";
+"catalog.buy" = "Купить";
+
+"history.title" = "Мои заказы";
+
+"checkout.title" = "Оформить заказ";
