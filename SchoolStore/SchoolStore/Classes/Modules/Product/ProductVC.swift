@@ -91,6 +91,16 @@ final class ProductVC: UIViewController {
     private lazy var buyButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(goToCheckoutVC), for: .touchUpInside)
         return button
     }()
+    
+    @objc
+    func goToCheckoutVC() {
+        guard let product = product else {
+            return
+        }
+
+        self.navigationController?.pushViewController(VCFactory.buildCheckoutVC(with: product), animated: true)
+    }
 }

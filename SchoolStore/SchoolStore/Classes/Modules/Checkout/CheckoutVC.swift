@@ -18,9 +18,16 @@ final class CheckoutVC: UIViewController {
         
         view.addSubview(contentView)
         contentView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor).activate()
+        contentView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor).activate()
+        contentView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor).activate()
+        contentView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor).activate()
     }
-    
-    var product: Product?
+
+    var product: Product? {
+        didSet {
+            contentView.fillWith(product: product)
+        }
+    }
     
     private lazy var contentView: CheckoutView = {
         let contentView = CheckoutView()
