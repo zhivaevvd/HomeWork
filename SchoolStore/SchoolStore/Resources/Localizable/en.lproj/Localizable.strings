@@ -1,10 +1,42 @@
 
-"auth.login" = "Логин";
-"auth.password" = "Пароль";
-"auth.action" = "Войти";
+"auth.login" = "Login";
+"auth.password" = "Password";
+"auth.action" = "Sign In";
 
-"common.error" = "Что-то пошло не так";
-"common.emptyField" = "Поле пустое";
+"common.error" = "Something is wrong";
+"common.emptyField" = "Field is empty";
+"common.from" = "from";
+"common.in" = "in";
+"common.back" = "Back";
 
-"catalog.title" = "Каталог";
-"catalog.buy" = "Купить";
+"catalog.title" = "Catalog";
+"catalog.buy" = "Buy";
+
+"history.title" = "Orders";
+
+"checkout.title" = "Checkout";
+
+"profile.title" = "Profile";
+"profile.myOrders" = "My orders";
+"profile.exit" = "Exit";
+
+"settings.title" = "Settings";
+"settings.buttonChange" = "Change";
+"settings.anotherOccupation" = "Another occupation";
+
+"address.title" = "Address";
+"apartment.title" = "Apartment";
+"deliveryDate.title" = "Delivery date";
+"checkout.buy" = "Buy for";
+
+"orderNumber.title" = "Order №";
+"orderInWork.title" = "In work";
+"orderCancelled.title" = "Cancelled";
+
+"product.buyNow" = "Buy now";
+
+"specialization.developer" = "Developer";
+"specialization.tester" = "Tester";
+"specialization.tractorDriver" = "Tractor driver";
+"specialization.another" = "Another";
+

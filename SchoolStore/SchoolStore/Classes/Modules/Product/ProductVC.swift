@@ -13,8 +13,7 @@ final class ProductVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        
-        
+
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         scrollView.pinToSuperview()
@@ -27,14 +26,14 @@ final class ProductVC: UIViewController {
             .activate()
         
         view.addSubview(buyButton)
-        buyButton.setTitle("Купить сейчас", for: .normal)
+        buyButton.setTitle(L10n.Product.buyNow, for: .normal)
         buyButton.setTitleColor(UIColor.white, for: .normal)
         buyButton.backgroundColor = .systemBlue
         buyButton.layer.cornerRadius = 8
         buyButton.bottom(100).left(16).right(16).height(44)
         
         view.addSubview(backButton)
-        backButton.setTitle("Назад", for: .normal)
+        backButton.setTitle(L10n.Common.back, for: .normal)
         backButton.setTitleColor(UIColor.systemBlue, for: .normal)
         backButton.left(10).top(50)
         backButton.setImage(UIImage.init(systemName: "chevron.backward"), for: .normal)

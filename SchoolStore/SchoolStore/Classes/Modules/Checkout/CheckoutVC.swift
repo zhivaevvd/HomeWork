@@ -21,11 +21,14 @@ final class CheckoutVC: UIViewController {
         contentView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor).activate()
         contentView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor).activate()
         contentView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor).activate()
+        
+        contentView.navigationController = navigationController
     }
 
     var product: Product? {
         didSet {
             contentView.fillWith(product: product)
+            contentView.product = product
         }
     }
     

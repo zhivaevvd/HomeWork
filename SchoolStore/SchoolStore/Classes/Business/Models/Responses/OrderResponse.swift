@@ -10,3 +10,7 @@ import Foundation
 struct OrderResponse: Decodable {
     let orders: [Order]
 }
+
+struct CreateOrder: Decodable {
+    let order: NewOrder
+}

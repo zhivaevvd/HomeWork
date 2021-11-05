@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import AutoLayoutSugar
 
 class AuthVC: UIViewController {
     // MARK: Lifecycle
@@ -10,7 +11,19 @@ class AuthVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         localizable()
+        
+        signInButton.layer.cornerRadius = 8
+        signInButton.addSubview(indicator)
+        indicator.topAnchor.constraint(equalTo: signInButton.topAnchor).activate()
+        indicator.centerX().centerY()
     }
+
+    private lazy var indicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .medium)
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        indicator.color = .white
+        return indicator
+    }()
 
     // MARK: Internal
 
@@ -37,9 +50,14 @@ class AuthVC: UIViewController {
             authService?.authenticate(user: user, with: password, completion: { [weak self] (result: Result<String, Error>) in
                 switch result {
                 case .success:
-                    UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.rootViewController = VCFactory.buildTabBarVC()
+                    self!.indicator.startAnimating()
+                    self!.signInButton.setTitle("", for: .normal)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
+                        UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.rootViewController = VCFactory.buildTabBarVC()
+                    })
                 case let .failure(error):
                     self?.handle(error: error)
+                    self!.indicator.stopAnimating()
                 }
             })
         }

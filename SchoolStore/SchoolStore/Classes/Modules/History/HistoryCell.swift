@@ -61,21 +61,21 @@ final class HistoryCell: UITableViewCell {
                 return
             }
             
-            orderNumber.text = "Заказ №" + String(orderNum) + " от " + stringDate
+            orderNumber.text = "\(L10n.OrderNumber.title)" + String(orderNum) + " \(L10n.Common.from) " + stringDate
             
             switch status {
             case .inWork:
-                statusLabel.text = "В работе"
+                statusLabel.text = L10n.OrderInWork.title
                 statusLabel.textColor = .systemGreen
             case .done:
                 break
             case .cancelled:
-                statusLabel.text = "Отменен"
+                statusLabel.text = L10n.OrderCancelled.title
                 statusLabel.textColor = .red
             }
             
             orderDescription.text = "\(productQuantity) × " + "\(productSize) · " + title
-            deliveryLabel.text = "Дата доставки: \(stringEtd)" + "\nАдрес доставки: \(deliveryAddress)"
+            deliveryLabel.text = "\(L10n.DeliveryDate.title) : \(stringEtd)" + "\n\(L10n.Address.title): \(deliveryAddress)"
         }
     }
     
@@ -154,7 +154,7 @@ extension Date {
 
     var stringDate: String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd.MM.yyyy 'в' hh:mm"
+        formatter.dateFormat = "dd.MM.yyyy '\(L10n.Common.in)' hh:mm"
         return formatter.string(from: self)
     }
 

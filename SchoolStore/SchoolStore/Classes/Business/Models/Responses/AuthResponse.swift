@@ -22,3 +22,7 @@ struct AuthResponse: Decodable {
     let accessToken: String
     let profile: Profile
 }
+
+struct User: Decodable {
+    let profile: Profile
+}

@@ -8,6 +8,7 @@ import Foundation
 
 protocol AuthService: AnyObject {
     func authenticate(user: String, with password: String, completion: ((Result<String, Error>) -> Void)?)
+    func getProfile(completion: ((Result<Profile, Error>) -> Void)?)
 }
 
 // MARK: - AuthServiceImpl
@@ -23,6 +24,7 @@ final class AuthServiceImpl: AuthService {
     // MARK: Internal
 
     typealias Authenticated = DataResponse<AuthResponse>
+    typealias GetUser = DataResponse<User>
 
     func authenticate(user: String, with password: String, completion: ((Result<String, Error>) -> Void)?) {
         networkProvider.mock(
@@ -33,6 +35,20 @@ final class AuthServiceImpl: AuthService {
                     let token = data.data.accessToken
                     self?.dataService.appState.accessToken = token
                     completion?(Result.success(token))
+                case let .failure(error):
+                    completion?(Result.failure(error))
+                }
+            }
+        )
+    }
+    
+    func getProfile(completion: ((Result<Profile, Error>) -> Void)?) {
+        networkProvider.mock(
+            UserRequest.userGet,
+            completion: { (result: Result<GetUser, Error>) in
+                switch result {
+                case .success:
+                    completion?(result.map({ obj in obj.data.profile}))
                 case let .failure(error):
                     completion?(Result.failure(error))
                 }

@@ -5,6 +5,9 @@
 
 "common.error" = "Что-то пошло не так";
 "common.emptyField" = "Поле пустое";
+"common.from" = "от";
+"common.in" = "в";
+"common.back" = "Назад";
 
 "catalog.title" = "Каталог";
 "catalog.buy" = "Купить";
@@ -12,3 +15,28 @@
 "history.title" = "Мои заказы";
 
 "checkout.title" = "Оформить заказ";
+
+"profile.title" = "Профиль";
+"profile.myOrders" = "Мои заказы";
+"profile.exit" = "Выйти";
+
+"settings.title" = "Настройки";
+"settings.buttonChange" = "Изменить";
+"settings.anotherOccupation" = "Другой род деятельности";
+
+"address.title" = "Адрес доставки";
+"apartment.title" = "Квартира";
+"deliveryDate.title" = "Дата доставки";
+"checkout.buy" = "Купить за";
+
+"orderNumber.title" = "Заказ №";
+"orderInWork.title" = "В работе";
+"orderCancelled.title" = "Отменен";
+
+"product.buyNow" = "Купить сейчас";
+
+"specialization.developer" = "Разработчик";
+"specialization.tester" = "Тестировщик";
+"specialization.tractorDriver" = "Тракторист";
+"specialization.another" = "Другое";
+

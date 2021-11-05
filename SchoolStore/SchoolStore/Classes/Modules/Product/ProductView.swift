@@ -76,6 +76,13 @@ final class ProductView: UIView {
             }
             buton.addTarget(self, action: #selector(previewDidTap), for: .touchUpInside)
             previewsStackView.addArrangedSubview(buton)
+            
+            priceLabel.text = NumberFormatter.rubString(from: product.price)
+            badgeLabel.text = "\(product.badge.value)"
+            titleLabel.text = product.title
+            departmentLabel.text = product.department
+            descriptionLabel.text = product.description
+            detailsLabel.text = product.details.first
         }
     }
 
@@ -153,12 +160,6 @@ final class ProductView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
-//    private lazy var backButton: UIButton = {
-//        let btn = UIButton()
-//        btn.translatesAutoresizingMaskIntoConstraints = false
-//        return btn
-//    }()
 
     @objc
     private func previewDidTap(_ sender: UIButton) {
@@ -171,7 +172,6 @@ final class ProductView: UIView {
     }
 
     private func setup() {
-        //addSubview(backButton)
         addSubview(mainImageView)
         addSubview(scrollView)
         addSubview(priceLabel)
@@ -206,26 +206,23 @@ final class ProductView: UIView {
             .activate()
 
         previewsStackView.top().bottom().centerX().height(as: scrollView)
-
-        priceLabel.text = "9 000 ₽"
+        
         priceLabel.textColor = textPrimaryColor
         priceLabel.font = UIFont(name: "Roboto-Medium", size: 24)
         priceLabel.top(to: .bottom(20), of: scrollView).left(16)
 
-        badgeLabel.text = "Хит сезона"
+        //badgeLabel.text = "Хит сезона"
         badgeLabel.backgroundColor = .red
         badgeLabel.layer.masksToBounds = true
         badgeLabel.layer.cornerRadius = 8
         badgeLabel.right(16).centerY(0, to: priceLabel)
 
-        titleLabel.text = "Men's Nike Tom Brady Red Tampa Bay Buccaneers Super Bowl LV Bound Game Jersey"
         titleLabel.textColor = textPrimaryColor
         titleLabel.font = UIFont(name: "Roboto-Regular", size: 20)
         titleLabel.lineBreakMode = .byWordWrapping
         titleLabel.numberOfLines = 0
         titleLabel.top(to: .bottom(16), of: priceLabel).left(16).right(16)
 
-        departmentLabel.text = "Джерси"
         departmentLabel.textColor = textSecondaryColor
         departmentLabel.font = UIFont(name: "Roboto-Medium", size: 14)
         departmentLabel.top(to: .bottom(4), of: titleLabel).left(16)
@@ -233,9 +230,6 @@ final class ProductView: UIView {
         sizeLabel.backgroundColor = .systemGray2
         sizeLabel.top(to: .bottom(16), of: departmentLabel).left(16).right(16).height(54)
 
-        descriptionLabel
-            .text =
-            "The Tampa Bay Buccaneers are headed to Super Bowl LV! As a major fan, this is no surprise but it's definitely worth celebrating, especially after the unprecedented 2020 NFL season. Add this Tom Brady Game Jersey to your collection to ensure you're Super Bowl ready. This Nike gear features bold commemorative graphics that will let the Tampa Bay Buccaneers know they have the best fans in the league."
         descriptionLabel.textColor = textPrimaryColor
         descriptionLabel.font = UIFont(name: "Roboto-Regular", size: 14)
         descriptionLabel.lineBreakMode = .byWordWrapping
@@ -244,10 +238,6 @@ final class ProductView: UIView {
 
         separatorView.backgroundColor = Asset.separator.color
         separatorView.top(to: .bottom(16), of: descriptionLabel).left(16).right(16).height(1)
-
-        detailsLabel
-            .text =
-            "Material: 100% Polyester\nFoam tongue helps reduce lace pressure.\nMesh in the upper provides a breathable and plush sensation that stretches with your foot.\nMidfoot webbing delivers security. The webbing tightens around your foot when you lace up, letting you choose your fit and feel.\nNike React foam is lightweight, springy and durable. More foam means better cushioning without the bulk. A Zoom Air unit in the forefoot delivers more bounce with every step. It's top-loaded to be closer to your foot for responsiveness.\nThe classic fit and feel of the Pegasus is back—with a wider toe box to provide extra room. Seaming on the upper provides a better shape and fit, delivering a fresh take on an icon.\nOfficially licensed\nImported\nBrand: Nike"
         detailsLabel.textColor = textSecondaryColor
         detailsLabel.font = UIFont(name: "Roboto-Regular", size: 14)
         detailsLabel.lineBreakMode = .byWordWrapping

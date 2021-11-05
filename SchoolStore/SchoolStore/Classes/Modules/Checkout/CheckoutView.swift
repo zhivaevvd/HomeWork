@@ -24,16 +24,22 @@ class CheckoutView: UIView {
         createDatePicker()
     }
     
+    var price: Int?
+    
+    var product: Product?
+    
+    var navigationController: UINavigationController?
+    
     func fillWith(product: Product?) {
         guard let product = product else {
             return
         }
         
-        //productTitle.text = product.title
         productTitle.textColor = Asset.textPrimary.color
-        
+        price = product.price
+
         let price = NumberFormatter.rubString(from: product.price)
-        buyButton.setTitle("Купить за \(price)", for: .normal)
+        buyButton.setTitle("\(L10n.Checkout.buy) \(price)", for: .normal)
         
         let size = product.sizes
         
@@ -104,7 +110,7 @@ class CheckoutView: UIView {
     private lazy var indicator: UILabel = {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "0"
+        label.text = "1"
         label.textColor = .black
         label.textAlignment = .center
         return label
@@ -125,7 +131,6 @@ class CheckoutView: UIView {
     private lazy var houseTF: InputField = {
         let tf = InputField()
         tf.translatesAutoresizingMaskIntoConstraints = false
-        tf.backgroundColor = Asset.textSecondary.color
         tf.layer.cornerRadius = 12
         return tf
     }()
@@ -133,28 +138,25 @@ class CheckoutView: UIView {
     private lazy var flatNumberTF: InputField = {
         let tf = InputField()
         tf.translatesAutoresizingMaskIntoConstraints = false
-        tf.backgroundColor = Asset.textSecondary.color
         tf.layer.cornerRadius = 12
         return tf
     }()
     
-    private lazy var deliveryDate: InputField = {
+    private lazy var deliveryDateTF: InputField = {
         let tf = InputField()
         tf.translatesAutoresizingMaskIntoConstraints = false
-        tf.backgroundColor = Asset.textSecondary.color
         tf.layer.cornerRadius = 12
-//        tf.height(44)
-//        tf.backgroundColor = Asset.textSecondary.color.withAlphaComponent(0.87)
         return tf
     }()
     
-    private lazy var buyButton: UIButton = {
+    public lazy var buyButton: UIButton = {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.setTitleColor(.white, for: .normal)
         btn.layer.cornerRadius = 8
         btn.backgroundColor = .blue
         btn.height(44)
+        btn.addTarget(self, action: #selector(buyButtonPressed), for: .touchUpInside)
         return btn
     }()
     
@@ -174,9 +176,11 @@ class CheckoutView: UIView {
     private func createDatePicker() {
         datePicker.preferredDatePickerStyle = .wheels
         datePicker.datePickerMode = .date
-        deliveryDate.textField.inputView = datePicker
-        deliveryDate.textField.inputAccessoryView = createToolBar()
+        deliveryDateTF.textField.inputView = datePicker
+        deliveryDateTF.textField.inputAccessoryView = createToolBar()
     }
+    
+    private var orderService = CoreFactory.buildOrderService()
     
     private func setup() {
         addSubview(contentImageView)
@@ -185,7 +189,7 @@ class CheckoutView: UIView {
         addSubview(stackView)
         addSubview(houseTF)
         addSubview(flatNumberTF)
-        addSubview(deliveryDate)
+        addSubview(deliveryDateTF)
         addSubview(buyButton)
         
         stackView.distribution = .fillEqually
@@ -203,13 +207,12 @@ class CheckoutView: UIView {
             .right(17)
         houseTF.top(to: .bottom(48), of: stackView).left(16).right(16)
         flatNumberTF.top(to: .bottom(32), of: houseTF).left(16).right(16)
-        deliveryDate.top(to: .bottom(32), of: flatNumberTF).left(16).right(16)
+        deliveryDateTF.top(to: .bottom(32), of: flatNumberTF).left(16).right(16)
         buyButton.bottom(27).left(16).right(16)
         
-        houseTF.title = "Адрес"
-        flatNumberTF.title = "Квартира"
-        deliveryDate.title = "Дата доставки"
-        //buyButton.setTitle("Купить", for: .normal)
+        houseTF.title = L10n.Address.title
+        flatNumberTF.title = L10n.Apartment.title
+        deliveryDateTF.title = L10n.DeliveryDate.title
         
         departmentTitle.font = UIFont(name: "Roboto-Regular", size: 12)
         productTitle.font = UIFont(name: "Roboto-Regular", size: 14)
@@ -227,6 +230,10 @@ class CheckoutView: UIView {
         itemCount += 1
 
         indicator.text = String(itemCount)
+        
+        let currentPrice = price! * itemCount
+        let finalPrice = NumberFormatter.rubString(from: currentPrice)
+        buyButton.setTitle("\(L10n.Checkout.buy) \(finalPrice)", for: .normal)
     }
     
     @objc
@@ -235,11 +242,14 @@ class CheckoutView: UIView {
         guard var itemCount = Int(labelText) else { return }
 
         itemCount -= 1
-
-        if itemCount < 0 {
+        
+        if itemCount < 1 {
             indicator.text = labelText
         } else {
             indicator.text = String(itemCount)
+            let currentPrice = price! * itemCount
+            let finalPrice = NumberFormatter.rubString(from: currentPrice)
+            buyButton.setTitle("\(L10n.Checkout.buy) \(finalPrice)", for: .normal)
         }
     }
     
@@ -250,8 +260,49 @@ class CheckoutView: UIView {
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .none
         
-        self.deliveryDate.text = dateFormatter.string(from: datePicker.date)
+        self.deliveryDateTF.text = dateFormatter.string(from: datePicker.date)
         self.endEditing(true)
+    }
+    
+    @objc
+    func buyButtonPressed() {
+        guard let product = product,
+              let quantity = indicator.text,
+              let house = houseTF.textField.text,
+              let apartment = flatNumberTF.textField.text,
+              let etd = deliveryDateTF.textField.text
+        else {
+            return
+        }
+
+        let size = (product.sizes[0].value)
+        let productId = product.id
+        var flag = true
+        
+        if house == "" {
+            houseTF.error = L10n.Common.emptyField
+            flag = false
+        }
+        
+        if apartment == "" {
+            flatNumberTF.error = L10n.Common.emptyField
+            flag = false
+        }
+        
+        if etd == "" {
+            deliveryDateTF.error = L10n.Common.emptyField
+            flag = false
+        }
+        
+        if flag == true {
+            orderService.createOrder(quantity: quantity, house: house, apartment: apartment, etd: etd, productId: productId, size: size, completion: {
+                (result: Result<Void, Error>) in
+                guard case .success = result else {
+                    return
+                }
+                self.navigationController?.popToRootViewController(animated: true)
+            })
+        }
     }
 
 }

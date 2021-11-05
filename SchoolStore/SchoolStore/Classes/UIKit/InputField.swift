@@ -89,7 +89,7 @@ final class InputField: UIView, InputFieldProtocol {
         return view
     }()
 
-    private lazy var titleLabel: UILabel = {
+    public lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

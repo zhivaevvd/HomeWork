@@ -12,13 +12,27 @@
 		630CB1282721ADDD0014A61B /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 630CB1272721ADDD0014A61B /* KeychainAccess */; };
 		630CB12B2721ADE50014A61B /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 630CB12A2721ADE50014A61B /* Kingfisher */; };
 		630CB12E2721ADEC0014A61B /* AutoLayoutSugar in Frameworks */ = {isa = PBXBuildFile; productRef = 630CB12D2721ADEC0014A61B /* AutoLayoutSugar */; };
+		631B1E99272AD84400C80C54 /* ScrollableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631B1E98272AD84400C80C54 /* ScrollableView.swift */; };
+		631B1E9C272AD89900C80C54 /* DefaultBottomSheetStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631B1E9B272AD89900C80C54 /* DefaultBottomSheetStyle.swift */; };
+		631B1E9E272AD8B200C80C54 /* BottomSheetParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631B1E9D272AD8B200C80C54 /* BottomSheetParameters.swift */; };
+		631B1EA0272AD8DC00C80C54 /* UIPanGestureRecognizer+Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631B1E9F272AD8DC00C80C54 /* UIPanGestureRecognizer+Direction.swift */; };
+		631B1EA2272AD8FB00C80C54 /* BottomSheetStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631B1EA1272AD8FB00C80C54 /* BottomSheetStyle.swift */; };
+		631B1EA4272AD91B00C80C54 /* BottomSheetParametersProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631B1EA3272AD91B00C80C54 /* BottomSheetParametersProtocol.swift */; };
+		631B1EA6272AD93500C80C54 /* BottomSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631B1EA5272AD93500C80C54 /* BottomSheetController.swift */; };
+		631B1EA8272AD95000C80C54 /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631B1EA7272AD95000C80C54 /* PresentationController.swift */; };
+		6329015F272C2B7400EAF6D9 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6329015E272C2B7400EAF6D9 /* SettingsVC.swift */; };
+		63290161272C2B8100EAF6D9 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63290160272C2B8100EAF6D9 /* SettingsView.swift */; };
 		633C7D79272152AA00836BA2 /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633C7D78272152AA00836BA2 /* HistoryCell.swift */; };
+		6359B41E27342240007AE9C4 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6359B41D27342240007AE9C4 /* UserService.swift */; };
+		638E2462273406B50028A468 /* NewOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638E2461273406B50028A468 /* NewOrder.swift */; };
 		6390A9D62722F4BF00DAD0C7 /* listOfOrders2.json in Resources */ = {isa = PBXBuildFile; fileRef = 6390A9D52722F4BF00DAD0C7 /* listOfOrders2.json */; };
 		6390A9DA2723054800DAD0C7 /* Checkout.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6390A9D92723054800DAD0C7 /* Checkout.storyboard */; };
 		6390A9DD2723058400DAD0C7 /* CheckoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6390A9DC2723058400DAD0C7 /* CheckoutVC.swift */; };
 		639B81C12721944E004635E5 /* HistoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639B81C02721944E004635E5 /* HistoryService.swift */; };
 		639B81C327219718004635E5 /* OrderResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639B81C227219718004635E5 /* OrderResponse.swift */; };
+		63B785EA2732BEE500323BDC /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 63B785E92732BEE500323BDC /* IQKeyboardManagerSwift */; };
 		63C5CE282726EC3D00683F38 /* CheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C5CE272726EC3D00683F38 /* CheckoutView.swift */; };
+		63E8C09F27316C7B00EA2EE4 /* OrderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E8C09E27316C7B00EA2EE4 /* OrderService.swift */; };
 		C2141660270DBD1000C40071 /* HistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C214165F270DBD1000C40071 /* HistoryVC.swift */; };
 		C2141662270DBD2900C40071 /* CatalogVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2141661270DBD2900C40071 /* CatalogVC.swift */; };
 		C2151F52271885F3009036CB /* CatalogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2151F51271885F3009036CB /* CatalogService.swift */; };
@@ -102,13 +116,26 @@
 /* Begin PBXFileReference section */
 		5E74DFAD2DCF610F9DC7903D /* InputField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputField.swift; sourceTree = "<group>"; };
 		630CB12F2721B2530014A61B /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ru; path = ru.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		631B1E98272AD84400C80C54 /* ScrollableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableView.swift; sourceTree = "<group>"; };
+		631B1E9B272AD89900C80C54 /* DefaultBottomSheetStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultBottomSheetStyle.swift; sourceTree = "<group>"; };
+		631B1E9D272AD8B200C80C54 /* BottomSheetParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetParameters.swift; sourceTree = "<group>"; };
+		631B1E9F272AD8DC00C80C54 /* UIPanGestureRecognizer+Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPanGestureRecognizer+Direction.swift"; sourceTree = "<group>"; };
+		631B1EA1272AD8FB00C80C54 /* BottomSheetStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetStyle.swift; sourceTree = "<group>"; };
+		631B1EA3272AD91B00C80C54 /* BottomSheetParametersProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetParametersProtocol.swift; sourceTree = "<group>"; };
+		631B1EA5272AD93500C80C54 /* BottomSheetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetController.swift; sourceTree = "<group>"; };
+		631B1EA7272AD95000C80C54 /* PresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
+		6329015E272C2B7400EAF6D9 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		63290160272C2B8100EAF6D9 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		633C7D78272152AA00836BA2 /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
+		6359B41D27342240007AE9C4 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		638E2461273406B50028A468 /* NewOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOrder.swift; sourceTree = "<group>"; };
 		6390A9D52722F4BF00DAD0C7 /* listOfOrders2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = listOfOrders2.json; sourceTree = "<group>"; };
 		6390A9D92723054800DAD0C7 /* Checkout.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Checkout.storyboard; sourceTree = "<group>"; };
 		6390A9DC2723058400DAD0C7 /* CheckoutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutVC.swift; sourceTree = "<group>"; };
 		639B81C02721944E004635E5 /* HistoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryService.swift; sourceTree = "<group>"; };
 		639B81C227219718004635E5 /* OrderResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderResponse.swift; sourceTree = "<group>"; };
 		63C5CE272726EC3D00683F38 /* CheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutView.swift; sourceTree = "<group>"; };
+		63E8C09E27316C7B00EA2EE4 /* OrderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderService.swift; sourceTree = "<group>"; };
 		C214165F270DBD1000C40071 /* HistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryVC.swift; sourceTree = "<group>"; };
 		C2141661270DBD2900C40071 /* CatalogVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogVC.swift; sourceTree = "<group>"; };
 		C2151F51271885F3009036CB /* CatalogService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogService.swift; sourceTree = "<group>"; };
@@ -195,6 +222,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63B785EA2732BEE500323BDC /* IQKeyboardManagerSwift in Frameworks */,
 				630CB12E2721ADEC0014A61B /* AutoLayoutSugar in Frameworks */,
 				630CB12B2721ADE50014A61B /* Kingfisher in Frameworks */,
 				630CB1282721ADDD0014A61B /* KeychainAccess in Frameworks */,
@@ -205,6 +233,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		631B1E95272ACF8C00C80C54 /* BottomSheet */ = {
+			isa = PBXGroup;
+			children = (
+				631B1E9A272AD86D00C80C54 /* Configurable */,
+				631B1E98272AD84400C80C54 /* ScrollableView.swift */,
+				631B1E9D272AD8B200C80C54 /* BottomSheetParameters.swift */,
+				631B1E9F272AD8DC00C80C54 /* UIPanGestureRecognizer+Direction.swift */,
+				631B1EA1272AD8FB00C80C54 /* BottomSheetStyle.swift */,
+				631B1EA3272AD91B00C80C54 /* BottomSheetParametersProtocol.swift */,
+				631B1EA5272AD93500C80C54 /* BottomSheetController.swift */,
+				631B1EA7272AD95000C80C54 /* PresentationController.swift */,
+			);
+			path = BottomSheet;
+			sourceTree = "<group>";
+		};
+		631B1E9A272AD86D00C80C54 /* Configurable */ = {
+			isa = PBXGroup;
+			children = (
+				631B1E9B272AD89900C80C54 /* DefaultBottomSheetStyle.swift */,
+			);
+			path = Configurable;
+			sourceTree = "<group>";
+		};
+		6329015D272C2B6000EAF6D9 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				6329015E272C2B7400EAF6D9 /* SettingsVC.swift */,
+				63290160272C2B8100EAF6D9 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		6390A9DB2723056A00DAD0C7 /* Checkout */ = {
 			isa = PBXGroup;
 			children = (
@@ -217,6 +277,7 @@
 		C213C1C42704C52700E84711 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				631B1E95272ACF8C00C80C54 /* BottomSheet */,
 				C239CB6227205A81003ABBB0 /* Loadable */,
 				5E74DFAD2DCF610F9DC7903D /* InputField.swift */,
 			);
@@ -264,6 +325,7 @@
 		C21E133427045A3F00867E2E /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				6329015D272C2B6000EAF6D9 /* Settings */,
 				6390A9DB2723056A00DAD0C7 /* Checkout */,
 				C2CD31AA27203DD5001A32C3 /* Product */,
 				C21E134727045BAF00867E2E /* Profile */,
@@ -378,6 +440,8 @@
 				C21E1352270460AE00867E2E /* DataService.swift */,
 				C2151F51271885F3009036CB /* CatalogService.swift */,
 				639B81C02721944E004635E5 /* HistoryService.swift */,
+				63E8C09E27316C7B00EA2EE4 /* OrderService.swift */,
+				6359B41D27342240007AE9C4 /* UserService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -401,12 +465,13 @@
 				C21E13502704604400867E2E /* AppState.swift */,
 				C21E13582704647800867E2E /* Errors.swift */,
 				C2D720A827048B1A00C40EA5 /* Profile.swift */,
-				C2B96D4A270DE0A00012D0E8 /* FieldError.swift */,
 				C2151F532718862B009036CB /* Product.swift */,
+				C2B96D4A270DE0A00012D0E8 /* FieldError.swift */,
 				C2CD3197272027EC001A32C3 /* ProductBadge.swift */,
 				C2CD31992720281B001A32C3 /* ProductSize.swift */,
 				C2CD319B2720284E001A32C3 /* Order.swift */,
 				C2CD319D272028B5001A32C3 /* OrderStatus.swift */,
+				638E2461273406B50028A468 /* NewOrder.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -538,6 +603,7 @@
 				630CB1272721ADDD0014A61B /* KeychainAccess */,
 				630CB12A2721ADE50014A61B /* Kingfisher */,
 				630CB12D2721ADEC0014A61B /* AutoLayoutSugar */,
+				63B785E92732BEE500323BDC /* IQKeyboardManagerSwift */,
 			);
 			productName = SchoolStore;
 			productReference = C21E131C2704510C00867E2E /* SchoolStore.app */;
@@ -572,6 +638,7 @@
 				630CB1262721ADDC0014A61B /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				630CB1292721ADE50014A61B /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				630CB12C2721ADEC0014A61B /* XCRemoteSwiftPackageReference "auto-layout-sugar-ios" */,
+				63B785E82732BEE500323BDC /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = C21E131D2704510C00867E2E /* Products */;
 			projectDirPath = "";
@@ -669,7 +736,9 @@
 				C27E0F1F270473A20015530B /* StoryboardSegues.swift in Sources */,
 				C21E134B27045C6C00867E2E /* AuthVC.swift in Sources */,
 				C239CB6A27205AA6003ABBB0 /* LoaderParameters.swift in Sources */,
+				638E2462273406B50028A468 /* NewOrder.swift in Sources */,
 				C2CD319C2720284E001A32C3 /* Order.swift in Sources */,
+				631B1E99272AD84400C80C54 /* ScrollableView.swift in Sources */,
 				C27E0F21270473A20015530B /* Strings.swift in Sources */,
 				C2B96D6A270DEAB20012D0E8 /* OrdersRequests.swift in Sources */,
 				C2D720A927048B1A00C40EA5 /* Profile.swift in Sources */,
@@ -686,13 +755,19 @@
 				C27E0F1D270473A20015530B /* Plist.swift in Sources */,
 				C21E13512704604400867E2E /* AppState.swift in Sources */,
 				C2D720A427048AAF00C40EA5 /* DataResponse.swift in Sources */,
+				63290161272C2B8100EAF6D9 /* SettingsView.swift in Sources */,
 				C239CB6E27205ABE003ABBB0 /* LoaderParameters+Default.swift in Sources */,
 				C239CB6B27205AA6003ABBB0 /* UILoadable.swift in Sources */,
+				631B1EA8272AD95000C80C54 /* PresentationController.swift in Sources */,
 				C27E0F1E270473A20015530B /* Assets.swift in Sources */,
+				631B1E9C272AD89900C80C54 /* DefaultBottomSheetStyle.swift in Sources */,
+				63E8C09F27316C7B00EA2EE4 /* OrderService.swift in Sources */,
 				C2B96D49270DDE6F0012D0E8 /* ErrorResponse.swift in Sources */,
 				C2B96D41270DD9770012D0E8 /* SnackerStyle.swift in Sources */,
+				631B1EA6272AD93500C80C54 /* BottomSheetController.swift in Sources */,
 				C2151F5627188687009036CB /* CatalogResponse.swift in Sources */,
 				C2CD319A2720281B001A32C3 /* ProductSize.swift in Sources */,
+				631B1E9E272AD8B200C80C54 /* BottomSheetParameters.swift in Sources */,
 				C21E13632704661500867E2E /* VCFactory.swift in Sources */,
 				C2151F52271885F3009036CB /* CatalogService.swift in Sources */,
 				C21E135D270464FF00867E2E /* Request.swift in Sources */,
@@ -700,13 +775,18 @@
 				C2B96D68270DEAA60012D0E8 /* CatallogRequests.swift in Sources */,
 				C2B96D45270DDA820012D0E8 /* Snacker.swift in Sources */,
 				C239CB6927205AA6003ABBB0 /* LoaderView.swift in Sources */,
+				6329015F272C2B7400EAF6D9 /* SettingsVC.swift in Sources */,
 				C21E1353270460AE00867E2E /* DataService.swift in Sources */,
+				631B1EA4272AD91B00C80C54 /* BottomSheetParametersProtocol.swift in Sources */,
 				C21E1357270463C400867E2E /* AuthService.swift in Sources */,
 				6390A9DD2723058400DAD0C7 /* CheckoutVC.swift in Sources */,
 				C2D7209F2704855100C40EA5 /* RequestBuilder.swift in Sources */,
+				631B1EA0272AD8DC00C80C54 /* UIPanGestureRecognizer+Direction.swift in Sources */,
 				63C5CE282726EC3D00683F38 /* CheckoutView.swift in Sources */,
+				631B1EA2272AD8FB00C80C54 /* BottomSheetStyle.swift in Sources */,
 				C239CB6827205AA6003ABBB0 /* UILoadable+UIView.swift in Sources */,
 				C2D7209D270484E700C40EA5 /* RequestMethod.swift in Sources */,
+				6359B41E27342240007AE9C4 /* UserService.swift in Sources */,
 				C2CD31AC27203DE4001A32C3 /* ProductVC.swift in Sources */,
 				C2CD31AE27203E3B001A32C3 /* ProductView.swift in Sources */,
 				C2CD31A527202CBA001A32C3 /* NumberFormatter+Default.swift in Sources */,
@@ -967,6 +1047,14 @@
 				kind = branch;
 			};
 		};
+		63B785E82732BEE500323BDC /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -989,6 +1077,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 630CB12C2721ADEC0014A61B /* XCRemoteSwiftPackageReference "auto-layout-sugar-ios" */;
 			productName = AutoLayoutSugar;
+		};
+		63B785E92732BEE500323BDC /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 63B785E82732BEE500323BDC /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -22,7 +22,10 @@ enum VCFactory {
             nvc.navigationBar.prefersLargeTitles = true
             switch rootVC {
             case let vc as ProfileVC:
-                vc.dataService = CoreFactory.dataService
+                let dataService = CoreFactory.dataService
+                let authService = CoreFactory.buildAuthService()
+                let snacker = CoreFactory.snacker
+                vc.setup(with: authService, snacker, dataService: dataService)
             case let vc as HistoryVC:
                 vc.historyService = CoreFactory.buildHistoryService()
                 vc.snacker = CoreFactory.snacker
@@ -42,9 +45,28 @@ enum VCFactory {
         return vc
     }
     
+    static func buildHistoryVC() -> UIViewController {
+        let vc = HistoryVC()
+        return vc
+    }
+    
     static func buildCheckoutVC(with product: Product) -> UIViewController {
         let vc = CheckoutVC()
         vc.product = product
+        return vc
+    }
+    
+    static func buildSettingsVC(with profile: Profile) -> UIViewController {
+        let vc = SettingsVC()
+        vc.profile = profile
+        vc.userService = CoreFactory.buildUserService()
+        return vc
+    }
+    
+    static func buildBottomSheetController(with contentView: UIView, onEveryTapOut: (() -> Void)?) -> UIViewController {
+        let parameters = BottomSheetParameters(contentView: contentView, onEveryTapOut: onEveryTapOut)
+        let vc = BottomSheetController(arguments: parameters)
+        vc.transitioningDelegate = vc
         return vc
     }
 }
