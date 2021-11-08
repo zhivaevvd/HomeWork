@@ -27,20 +27,19 @@ final class SettingsVC: UIViewController {
             .constraint(lessThanOrEqualTo: contentView.heightAnchor)
             .activate()
         
-//        view.addSubview(contentView)
-//        scrollView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor).activate()
-//        scrollView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor).activate()
-//        scrollView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor).activate()
-//        scrollView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor).activate()
-        
-        contentView.profileService = profileService
-        contentView.viewController = self
+        setup()
     }
     
     var profile: Profile? {
         didSet {
             contentView.fillWith(profile: profile)
         }
+    }
+    
+    private func setup() {
+        contentView.profileService = profileService
+        contentView.viewController = self
+        contentView.snacker = snacker
     }
     
     private lazy var contentView: SettingsView = {
@@ -56,7 +55,7 @@ final class SettingsVC: UIViewController {
         return scrollView
     }()
     
-    //private lazy var occupationTF = contentView.occupationTF
-    
     var profileService: ProfileService?
+    
+    var snacker: Snacker?
 }

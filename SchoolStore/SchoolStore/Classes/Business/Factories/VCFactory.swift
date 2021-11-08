@@ -53,6 +53,7 @@ enum VCFactory {
     static func buildCheckoutVC(with product: Product) -> UIViewController {
         let vc = CheckoutVC()
         vc.product = product
+        vc.snacker = CoreFactory.snacker
         return vc
     }
     
@@ -60,6 +61,7 @@ enum VCFactory {
         let vc = SettingsVC()
         vc.profile = profile
         vc.profileService = CoreFactory.buildProfileService()
+        vc.snacker = CoreFactory.snacker
         return vc
     }
     

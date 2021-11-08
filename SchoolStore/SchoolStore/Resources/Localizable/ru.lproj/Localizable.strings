@@ -15,6 +15,7 @@
 "history.title" = "Мои заказы";
 
 "checkout.title" = "Оформить заказ";
+"checkout.createOrder.success" = "Заказ успешно оформлен";
 
 "profile.title" = "Профиль";
 "profile.myOrders" = "Мои заказы";
@@ -26,6 +27,8 @@
 "settings.name" = "Имя";
 "settings.surname" = "Фамилия";
 "settings.surname" = "Род деятельности";
+"settings.snacker.success" = "Профиль был успешно изменен";
+"settings.snacker.error" = "Во время изменения профиля произошла ошибка";
 
 "address.title" = "Адрес доставки";
 "apartment.title" = "Квартира";

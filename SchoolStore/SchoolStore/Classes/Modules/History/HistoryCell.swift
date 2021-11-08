@@ -89,7 +89,8 @@ final class HistoryCell: UITableViewCell {
     private lazy var orderNumber: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 12, weight: .medium)
+//        label.font = .systemFont(ofSize: 12, weight: .medium)
+        label.textColor = Asset.textPrimary.color
         label.lineBreakMode = NSLineBreakMode.byWordWrapping
         label.numberOfLines = 3
         return label
@@ -106,7 +107,6 @@ final class HistoryCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 14, weight: .medium)
-        //label.lineBreakMode = NSLineBreakMode.byWordWrapping
         label.numberOfLines = 3
         return label
     }()
@@ -139,8 +139,11 @@ final class HistoryCell: UITableViewCell {
         
         contentImageView.top(16).left(16).width(63.02).height(64).bottom(69)
         orderNumber.top(16).left(to: .right(8), of: contentImageView).height(12)
+        
         statusLabel.top(to: .bottom(8), of: orderNumber).left(to: .right(8), of: contentImageView).width(203).height(17)
+        
         orderDescription.top(to: .bottom(8), of: statusLabel).left(to: . right(8), of: contentImageView).width(257)
+        
         deliveryLabel.top(to: .bottom(8), of: orderDescription).left(to: .right(8), of: contentImageView).width(257)
         
         separatorView.bottom().left(16).right(16).height(1)

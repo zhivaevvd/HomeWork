@@ -9,12 +9,13 @@
 "common.in" = "in";
 "common.back" = "Back";
 
-"catalog.title" = "Catalog";
+"catalog.title" = "Catalogue";
 "catalog.buy" = "Buy";
 
-"history.title" = "Orders";
+"history.title" = "My orders";
 
 "checkout.title" = "Checkout";
+"checkout.createOrder.success" = "Order successfully completed";
 
 "profile.title" = "Profile";
 "profile.myOrders" = "My orders";
@@ -26,6 +27,8 @@
 "settings.name" = "Name";
 "settings.surname" = "Surname";
 "settings.surname" = "Occupation";
+"settings.snacker.success" = "Profile has been successfully changed";
+"settings.snacker.error" = "An error occurred while changing the profile";
 
 "address.title" = "Address";
 "apartment.title" = "Apartment";

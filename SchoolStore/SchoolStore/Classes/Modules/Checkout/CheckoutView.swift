@@ -30,6 +30,8 @@ class CheckoutView: UIView {
     
     var navigationController: UINavigationController?
     
+    var snacker: Snacker?
+    
     func fillWith(product: Product?) {
         guard let product = product else {
             return
@@ -298,9 +300,11 @@ class CheckoutView: UIView {
             orderService.createOrder(quantity: quantity, house: house, apartment: apartment, etd: etd, productId: productId, size: size, completion: {
                 (result: Result<Void, Error>) in
                 guard case .success = result else {
+                    self.snacker?.show(snack: L10n.Common.error, with: .error)
                     return
                 }
                 self.navigationController?.popToRootViewController(animated: true)
+                self.snacker?.show(snack: L10n.Checkout.CreateOrder.success, with: .info)
             })
         }
     }

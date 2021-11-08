@@ -23,6 +23,7 @@ final class CheckoutVC: UIViewController {
         contentView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor).activate()
         
         contentView.navigationController = navigationController
+        contentView.snacker = snacker
     }
 
     var product: Product? {
@@ -37,4 +38,6 @@ final class CheckoutVC: UIViewController {
         contentView.translatesAutoresizingMaskIntoConstraints = false
         return contentView
     }()
+    
+    var snacker: Snacker?
 }

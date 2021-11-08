@@ -80,6 +80,7 @@ final class ProductView: UIView {
             priceLabel.text = NumberFormatter.rubString(from: product.price)
             badgeLabel.text = "\(product.badge.value)"
             titleLabel.text = product.title
+            sizeLabel.text = product.sizes[0].value
             departmentLabel.text = product.department
             descriptionLabel.text = product.description
             detailsLabel.text = product.details.first
@@ -160,22 +161,18 @@ final class ProductView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-
-    @objc
-    private func previewDidTap(_ sender: UIButton) {
-        guard let imageView = sender.subviews.first(where: { $0 is UIImageView }) as? UIImageView,
-              let image = imageView.image
-        else {
-            return
-        }
-        mainImageView.image = image
-    }
+    
+    private lazy var badgeView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
 
     private func setup() {
         addSubview(mainImageView)
         addSubview(scrollView)
         addSubview(priceLabel)
-        addSubview(badgeLabel)
+        addSubview(badgeView)
         addSubview(titleLabel)
         addSubview(departmentLabel)
         addSubview(sizeLabel)
@@ -210,12 +207,14 @@ final class ProductView: UIView {
         priceLabel.textColor = textPrimaryColor
         priceLabel.font = UIFont(name: "Roboto-Medium", size: 24)
         priceLabel.top(to: .bottom(20), of: scrollView).left(16)
-
-        //badgeLabel.text = "Хит сезона"
-        badgeLabel.backgroundColor = .red
-        badgeLabel.layer.masksToBounds = true
-        badgeLabel.layer.cornerRadius = 8
-        badgeLabel.right(16).centerY(0, to: priceLabel)
+        
+        badgeView.backgroundColor = .systemGreen
+        badgeView.layer.masksToBounds = true
+        badgeView.layer.cornerRadius = 8
+        badgeView.right(16).centerY(0, to: priceLabel).height(24).width(99)
+        
+        badgeView.addSubview(badgeLabel)
+        badgeLabel.centerX().height(22)
 
         titleLabel.textColor = textPrimaryColor
         titleLabel.font = UIFont(name: "Roboto-Regular", size: 20)
@@ -243,5 +242,15 @@ final class ProductView: UIView {
         detailsLabel.lineBreakMode = .byWordWrapping
         detailsLabel.numberOfLines = 0
         detailsLabel.top(to: .bottom(16), of: separatorView).left(16).right(16).bottom(76)
+    }
+    
+    @objc
+    private func previewDidTap(_ sender: UIButton) {
+        guard let imageView = sender.subviews.first(where: { $0 is UIImageView }) as? UIImageView,
+              let image = imageView.image
+        else {
+            return
+        }
+        mainImageView.image = image
     }
 }

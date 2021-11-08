@@ -51,6 +51,10 @@ internal enum L10n {
     internal static let buy = L10n.tr("Localizable", "checkout.buy")
     /// Оформить заказ
     internal static let title = L10n.tr("Localizable", "checkout.title")
+    internal enum CreateOrder {
+      /// Заказ успешно оформлен
+      internal static let success = L10n.tr("Localizable", "checkout.createOrder.success")
+    }
   }
 
   internal enum Common {
@@ -123,6 +127,12 @@ internal enum L10n {
     internal static let surname = L10n.tr("Localizable", "settings.surname")
     /// Настройки
     internal static let title = L10n.tr("Localizable", "settings.title")
+    internal enum Snacker {
+      /// Во время изменения профиля произошла ошибка
+      internal static let error = L10n.tr("Localizable", "settings.snacker.error")
+      /// Профиль был успешно изменен
+      internal static let success = L10n.tr("Localizable", "settings.snacker.success")
+    }
   }
 
   internal enum Specialization {

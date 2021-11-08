@@ -154,20 +154,6 @@ final class HistoryVC: UIViewController {
 }
 
 extension HistoryVC: UITableViewDelegate {
-    
-//    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-//        let deleteAction = UITableViewRowAction(style: .destructive, title: L10n.Action.delete) { (_, indexPath) in
-//            self.items.remove(at: indexPath.row)
-//        }
-//
-//        if self.items[indexPath.row].status == .inWork {
-//            return nil
-//        } else {
-//            return [deleteAction]
-//        }
-//
-//    }
-    
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
 
         let contextItem = UIContextualAction(style: .destructive, title: L10n.Action.delete) {  (_, _, _) in
@@ -177,24 +163,17 @@ extension HistoryVC: UITableViewDelegate {
                 switch result {
                 case .success:
                     self.items.remove(at: indexPath.row)
+                    self.snapshot(Array(Set(self.items)))
                 case .failure:
-                    print("fail")
+                    self.snacker?.show(snack: L10n.Common.error, with: .error)
                 }
             })
         }
 
-        let swipeActions = UISwipeActionsConfiguration(actions: [contextItem])
+        let swipeActions = UISwipeActionsConfiguration(actions: dataSource?.itemIdentifier(for: indexPath)?.status == .inWork ? [] : [contextItem])
         return swipeActions
     }
     
-//    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-//        if self.items[indexPath.row].status == .inWork {
-//            return false
-//        } else {
-//            return true
-//        }
-//    }
-
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate _: Bool) {
         guard !isLoadingNextPage else { return }
         let offset = scrollView.contentOffset.y

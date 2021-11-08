@@ -22,6 +22,8 @@ final class SettingsView: UIView {
         setup()
     }
     
+    var snacker: Snacker?
+    
     func fillWith(profile: Profile?) {
         guard let profile = profile else {
             return
@@ -226,14 +228,16 @@ final class SettingsView: UIView {
             profileService?.userChange(name: name, surname: surname, occupation: occupation, avatar: avatar, completion: {
                 (result: Result<Void, Error>) in
                 guard case .success = result else {
+                    self.snacker?.show(snack: L10n.Settings.Snacker.error, with: .error)
                     return
                 }
                 print("succ")
                 self.indicator.startAnimating()
                 self.changeButton.setTitle("", for: .normal)
-                
+
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
                     self.viewController?.navigationController?.popToRootViewController(animated: true)
+                    self.snacker?.show(snack: L10n.Settings.Snacker.success, with: .info)
                 })
             })
         } else {

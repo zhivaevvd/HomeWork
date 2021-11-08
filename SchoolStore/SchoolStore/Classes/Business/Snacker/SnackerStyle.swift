@@ -16,6 +16,7 @@ struct SnackStyle {
     // MARK: Internal
 
     static let error = SnackStyle(textColor: .white, backgroundColor: .red, font: .systemFont(ofSize: 14))
+    static let info = SnackStyle(textColor: .white, backgroundColor: .ttgDefaultBackground, font: .systemFont(ofSize: 14))
 
     var textColor: UIColor
     var backgroundColor: UIColor
