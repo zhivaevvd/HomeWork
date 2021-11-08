@@ -34,6 +34,7 @@ extension NetworkProvider {
 // MARK: - NetworkProviderImpl
 
 final class NetworkProviderImpl: NetworkProvider {
+    
     // MARK: Lifecycle
 
     init(requestBuilder: RequestBuilder) {

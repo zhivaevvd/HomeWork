@@ -23,6 +23,9 @@
 "settings.title" = "Настройки";
 "settings.buttonChange" = "Изменить";
 "settings.anotherOccupation" = "Другой род деятельности";
+"settings.name" = "Имя";
+"settings.surname" = "Фамилия";
+"settings.surname" = "Род деятельности";
 
 "address.title" = "Адрес доставки";
 "apartment.title" = "Квартира";
@@ -39,4 +42,9 @@
 "specialization.tester" = "Тестировщик";
 "specialization.tractorDriver" = "Тракторист";
 "specialization.another" = "Другое";
+
+"segmentedControl.all" = "Все";
+"segmentedControl.active" = "Активные";
+
+"action.delete" = "Удалить";
 

@@ -1,6 +1,11 @@
 {
-    "name": "Константин",
-    "surname": "Петров",
-    "occupation": "Сантехник",
-    "avatar": ""
+    "data": {
+        "profile": {
+            "name": "Анна",
+            "surname": "Виноградова",
+            "occupation": "Садовник",
+            "avatar": ""
+        }
+    }
 }
+

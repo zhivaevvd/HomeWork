@@ -15,6 +15,11 @@ internal enum L10n {
     return L10n.tr("Localizable", "age-value", p1)
   }
 
+  internal enum Action {
+    /// Удалить
+    internal static let delete = L10n.tr("Localizable", "action.delete")
+  }
+
   internal enum Address {
     /// Адрес доставки
     internal static let title = L10n.tr("Localizable", "address.title")
@@ -100,11 +105,22 @@ internal enum L10n {
     internal static let title = L10n.tr("Localizable", "profile.title")
   }
 
+  internal enum SegmentedControl {
+    /// Активные
+    internal static let active = L10n.tr("Localizable", "segmentedControl.active")
+    /// Все
+    internal static let all = L10n.tr("Localizable", "segmentedControl.all")
+  }
+
   internal enum Settings {
     /// Другой род деятельности
     internal static let anotherOccupation = L10n.tr("Localizable", "settings.anotherOccupation")
     /// Изменить
     internal static let buttonChange = L10n.tr("Localizable", "settings.buttonChange")
+    /// Имя
+    internal static let name = L10n.tr("Localizable", "settings.name")
+    /// Род деятельности
+    internal static let surname = L10n.tr("Localizable", "settings.surname")
     /// Настройки
     internal static let title = L10n.tr("Localizable", "settings.title")
   }

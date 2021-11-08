@@ -23,11 +23,11 @@
 		6329015F272C2B7400EAF6D9 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6329015E272C2B7400EAF6D9 /* SettingsVC.swift */; };
 		63290161272C2B8100EAF6D9 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63290160272C2B8100EAF6D9 /* SettingsView.swift */; };
 		633C7D79272152AA00836BA2 /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633C7D78272152AA00836BA2 /* HistoryCell.swift */; };
-		6359B41E27342240007AE9C4 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6359B41D27342240007AE9C4 /* UserService.swift */; };
 		638E2462273406B50028A468 /* NewOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638E2461273406B50028A468 /* NewOrder.swift */; };
 		6390A9D62722F4BF00DAD0C7 /* listOfOrders2.json in Resources */ = {isa = PBXBuildFile; fileRef = 6390A9D52722F4BF00DAD0C7 /* listOfOrders2.json */; };
 		6390A9DA2723054800DAD0C7 /* Checkout.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6390A9D92723054800DAD0C7 /* Checkout.storyboard */; };
 		6390A9DD2723058400DAD0C7 /* CheckoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6390A9DC2723058400DAD0C7 /* CheckoutVC.swift */; };
+		63942D252737EF1E00259620 /* CancelOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63942D242737EF1E00259620 /* CancelOrder.swift */; };
 		639B81C12721944E004635E5 /* HistoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639B81C02721944E004635E5 /* HistoryService.swift */; };
 		639B81C327219718004635E5 /* OrderResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639B81C227219718004635E5 /* OrderResponse.swift */; };
 		63B785EA2732BEE500323BDC /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 63B785E92732BEE500323BDC /* IQKeyboardManagerSwift */; };
@@ -51,7 +51,7 @@
 		C21E13512704604400867E2E /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21E13502704604400867E2E /* AppState.swift */; };
 		C21E1353270460AE00867E2E /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21E1352270460AE00867E2E /* DataService.swift */; };
 		C21E13552704619D00867E2E /* CoreFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21E13542704619D00867E2E /* CoreFactory.swift */; };
-		C21E1357270463C400867E2E /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21E1356270463C400867E2E /* AuthService.swift */; };
+		C21E1357270463C400867E2E /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21E1356270463C400867E2E /* ProfileService.swift */; };
 		C21E13592704647900867E2E /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21E13582704647800867E2E /* Errors.swift */; };
 		C21E135B270464DD00867E2E /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21E135A270464DD00867E2E /* NetworkProvider.swift */; };
 		C21E135D270464FF00867E2E /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21E135C270464FF00867E2E /* Request.swift */; };
@@ -127,11 +127,11 @@
 		6329015E272C2B7400EAF6D9 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		63290160272C2B8100EAF6D9 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		633C7D78272152AA00836BA2 /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
-		6359B41D27342240007AE9C4 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		638E2461273406B50028A468 /* NewOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOrder.swift; sourceTree = "<group>"; };
 		6390A9D52722F4BF00DAD0C7 /* listOfOrders2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = listOfOrders2.json; sourceTree = "<group>"; };
 		6390A9D92723054800DAD0C7 /* Checkout.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Checkout.storyboard; sourceTree = "<group>"; };
 		6390A9DC2723058400DAD0C7 /* CheckoutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutVC.swift; sourceTree = "<group>"; };
+		63942D242737EF1E00259620 /* CancelOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelOrder.swift; sourceTree = "<group>"; };
 		639B81C02721944E004635E5 /* HistoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryService.swift; sourceTree = "<group>"; };
 		639B81C227219718004635E5 /* OrderResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderResponse.swift; sourceTree = "<group>"; };
 		63C5CE272726EC3D00683F38 /* CheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutView.swift; sourceTree = "<group>"; };
@@ -155,7 +155,7 @@
 		C21E13502704604400867E2E /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		C21E1352270460AE00867E2E /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		C21E13542704619D00867E2E /* CoreFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreFactory.swift; sourceTree = "<group>"; };
-		C21E1356270463C400867E2E /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		C21E1356270463C400867E2E /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
 		C21E13582704647800867E2E /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		C21E135A270464DD00867E2E /* NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
 		C21E135C270464FF00867E2E /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
@@ -436,12 +436,11 @@
 		C21E135F270465D700867E2E /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				C21E1356270463C400867E2E /* AuthService.swift */,
+				C21E1356270463C400867E2E /* ProfileService.swift */,
 				C21E1352270460AE00867E2E /* DataService.swift */,
 				C2151F51271885F3009036CB /* CatalogService.swift */,
 				639B81C02721944E004635E5 /* HistoryService.swift */,
 				63E8C09E27316C7B00EA2EE4 /* OrderService.swift */,
-				6359B41D27342240007AE9C4 /* UserService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -472,6 +471,7 @@
 				C2CD319B2720284E001A32C3 /* Order.swift */,
 				C2CD319D272028B5001A32C3 /* OrderStatus.swift */,
 				638E2461273406B50028A468 /* NewOrder.swift */,
+				63942D242737EF1E00259620 /* CancelOrder.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -778,7 +778,8 @@
 				6329015F272C2B7400EAF6D9 /* SettingsVC.swift in Sources */,
 				C21E1353270460AE00867E2E /* DataService.swift in Sources */,
 				631B1EA4272AD91B00C80C54 /* BottomSheetParametersProtocol.swift in Sources */,
-				C21E1357270463C400867E2E /* AuthService.swift in Sources */,
+				C21E1357270463C400867E2E /* ProfileService.swift in Sources */,
+				63942D252737EF1E00259620 /* CancelOrder.swift in Sources */,
 				6390A9DD2723058400DAD0C7 /* CheckoutVC.swift in Sources */,
 				C2D7209F2704855100C40EA5 /* RequestBuilder.swift in Sources */,
 				631B1EA0272AD8DC00C80C54 /* UIPanGestureRecognizer+Direction.swift in Sources */,
@@ -786,7 +787,6 @@
 				631B1EA2272AD8FB00C80C54 /* BottomSheetStyle.swift in Sources */,
 				C239CB6827205AA6003ABBB0 /* UILoadable+UIView.swift in Sources */,
 				C2D7209D270484E700C40EA5 /* RequestMethod.swift in Sources */,
-				6359B41E27342240007AE9C4 /* UserService.swift in Sources */,
 				C2CD31AC27203DE4001A32C3 /* ProductVC.swift in Sources */,
 				C2CD31AE27203E3B001A32C3 /* ProductView.swift in Sources */,
 				C2CD31A527202CBA001A32C3 /* NumberFormatter+Default.swift in Sources */,

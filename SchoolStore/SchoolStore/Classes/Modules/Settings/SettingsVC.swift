@@ -15,19 +15,25 @@ final class SettingsVC: UIViewController {
         title = L10n.Settings.title
         view.backgroundColor = .white
         
-        view.addSubview(contentView)
-        contentView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor).activate()
-        contentView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor).activate()
-        contentView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor).activate()
-        contentView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor).activate()
+        view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        scrollView.pinToSuperview()
+        //scrollView.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor).activate()
+        contentView.pinToSuperview()
+            .width(as: scrollView)
         
-       // view.addSubview(changeButton)
-        //changeButton.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor).activate()
-        //changeButton.left(16).right(16).height(44)
+        scrollView
+            .heightAnchor
+            .constraint(lessThanOrEqualTo: contentView.heightAnchor)
+            .activate()
         
-        //occupationTF.textField.addTarget(self, action: #selector(test), for: [.allEditingEvents, .allTouchEvents])
+//        view.addSubview(contentView)
+//        scrollView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor).activate()
+//        scrollView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor).activate()
+//        scrollView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor).activate()
+//        scrollView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor).activate()
         
-        contentView.userService = userService
+        contentView.profileService = profileService
         contentView.viewController = self
     }
     
@@ -43,73 +49,14 @@ final class SettingsVC: UIViewController {
         return contentView
     }()
     
-    private lazy var occupationTF = contentView.occupationTF
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.showsVerticalScrollIndicator = false
+        return scrollView
+    }()
     
-    var userService: UserService?
+    //private lazy var occupationTF = contentView.occupationTF
     
-//    public lazy var anotherOccupationTF: InputField = {
-//        let textField = InputField()
-//        textField.translatesAutoresizingMaskIntoConstraints = false
-//        textField.backgroundColor = Asset.textSecondary.color
-//        textField.layer.cornerRadius = 10
-//        return textField
-//    }()
-    
-//    private lazy var changeButton: UIButton = {
-//        let btn = UIButton()
-//        btn.translatesAutoresizingMaskIntoConstraints = false
-//        btn.backgroundColor = .systemBlue
-//        btn.setTitle(L10n.Settings.buttonChange, for: .normal)
-//        btn.setTitleColor(.white, for: .normal)
-//        btn.layer.cornerRadius = 8
-//        return btn
-//    }()
-    
-//    @objc
-//    func test() {
-//        let array = [
-//            L10n.Specialization.developer,
-//            L10n.Specialization.tester,
-//            L10n.Specialization.tractorDriver,
-//            L10n.Specialization.another
-//        ]
-//        let view = UIStackView()
-//        view.axis = .vertical
-//        view.alignment = .leading
-//        view.translatesAutoresizingMaskIntoConstraints = false
-//        
-//        array.forEach { specialization in
-//        let button = UIButton()
-//        button.height(44)
-//        button.setTitleColor(.blue, for: .normal)
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        button.setTitle(specialization, for: .normal)
-//        button.addTarget(self, action: #selector(specializationDidTap), for: .touchUpInside)
-//        view.addArrangedSubview(button)
-//        }
-//                
-//        let vc = VCFactory.buildBottomSheetController(
-//                with: view,
-//                onEveryTapOut: nil
-//            )
-//        
-//        present(vc, animated: true, completion: nil)
-//    }
-    
-//    @objc
-//    func specializationDidTap(_ sender: UIButton) {
-//        guard let text = sender.titleLabel?.text else { return }
-//        occupationTF.textField.text = text
-//
-//        if occupationTF.textField.text == L10n.Specialization.another {
-//            contentView.addSubview(anotherOccupationTF)
-//            anotherOccupationTF.top(to: .bottom(32), of: occupationTF).left(16).right(16)
-//            anotherOccupationTF.textField.placeholder = L10n.Settings.anotherOccupation
-//            anotherOccupationTF.title = L10n.Settings.anotherOccupation
-//        } else {
-//            anotherOccupationTF.isHidden = true
-//        }
-//
-//        presentedViewController?.dismiss(animated: true, completion: nil)
-//    }
+    var profileService: ProfileService?
 }

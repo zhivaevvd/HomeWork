@@ -6,14 +6,15 @@ import Foundation
 
 // MARK: - AuthService
 
-protocol AuthService: AnyObject {
+protocol ProfileService: AnyObject {
     func authenticate(user: String, with password: String, completion: ((Result<String, Error>) -> Void)?)
     func getProfile(completion: ((Result<Profile, Error>) -> Void)?)
+    func userChange(name: String, surname: String, occupation: String, avatar: String, completion: ((Result<Void, Error>) -> Void)?)
 }
 
 // MARK: - AuthServiceImpl
 
-final class AuthServiceImpl: AuthService {
+final class ProfileServiceImpl: ProfileService {
     // MARK: Lifecycle
 
     init(networkProvider: NetworkProvider, dataService: DataService) {
@@ -25,6 +26,18 @@ final class AuthServiceImpl: AuthService {
 
     typealias Authenticated = DataResponse<AuthResponse>
     typealias GetUser = DataResponse<User>
+    
+    func userChange(name: String, surname: String, occupation: String, avatar: String, completion: ((Result<Void, Error>) -> Void)?) {
+        networkProvider.mock(UserRequest.userChange(name: name, surname: surname, occupation: occupation, avatar: avatar), completion: { (result: Result<GetUser, Error>) in
+            switch result {
+            case .success:
+                completion?(Result.success(()))
+            case let .failure(error):
+                completion?(Result.failure(error))
+            }
+            
+        })
+    }
 
     func authenticate(user: String, with password: String, completion: ((Result<String, Error>) -> Void)?) {
         networkProvider.mock(

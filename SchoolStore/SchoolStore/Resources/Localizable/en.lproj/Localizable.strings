@@ -23,6 +23,9 @@
 "settings.title" = "Settings";
 "settings.buttonChange" = "Change";
 "settings.anotherOccupation" = "Another occupation";
+"settings.name" = "Name";
+"settings.surname" = "Surname";
+"settings.surname" = "Occupation";
 
 "address.title" = "Address";
 "apartment.title" = "Apartment";
@@ -39,4 +42,9 @@
 "specialization.tester" = "Tester";
 "specialization.tractorDriver" = "Tractor driver";
 "specialization.another" = "Another";
+
+"segmentedControl.all" = "All";
+"segmentedControl.active" = "Active";
+
+"action.delete" = "Delete";
 

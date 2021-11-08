@@ -4,6 +4,7 @@
 
 import UIKit
 import AutoLayoutSugar
+import Kingfisher
 
 class ProfileVC: UIViewController {
     // MARK: Lifecycle
@@ -14,7 +15,7 @@ class ProfileVC: UIViewController {
         super.viewDidLoad()
         tabBarController?.tabBar.selectedItem?.title = L10n.Profile.title
 
-        authService?.getProfile(completion: {
+        profileService?.getProfile(completion: {
             (result: Result<Profile, Error>) in
             switch result {
             case let .success(pr):
@@ -72,6 +73,22 @@ class ProfileVC: UIViewController {
         logoutButton.addTarget(self, action: #selector(logoutPressed), for: .touchUpInside)
         ordersButton.addTarget(self, action: #selector(ordersButtonPressed), for: .touchUpInside)
         settingsButton.addTarget(self, action: #selector(settingsButtonPressed), for: .touchUpInside)
+        
+        if let preview = profile?.avatarUrl, let previewUrl = URL(string: preview) {
+            let contentImageResource = ImageResource(downloadURL: previewUrl, cacheKey: preview)
+            imageView.kf.setImage(
+                with: contentImageResource,
+                placeholder: Asset.itemPlaceholder.image,
+                options: [
+                    .transition(.fade(0.2)),
+                    .forceTransition,
+                    .cacheOriginalImage,
+                    .keepCurrentImageWhileLoading,
+                ]
+            )
+        } else {
+            imageView.image = Asset.itemPlaceholder.image
+        }
         
     }
     
@@ -204,13 +221,13 @@ class ProfileVC: UIViewController {
         self.navigationController?.pushViewController(VCFactory.buildSettingsVC(with: profile), animated: true)
     }
     
-    func setup(with authService: AuthService, _ snacker: Snacker, dataService: DataService) {
-        self.authService = authService
+    func setup(with profileService: ProfileService, _ snacker: Snacker, dataService: DataService) {
+        self.profileService = profileService
         self.snacker = snacker
         self.dataService = dataService
     }
     
-    private var authService: AuthService?
+    private var profileService: ProfileService?
     
     private var snacker: Snacker?
     

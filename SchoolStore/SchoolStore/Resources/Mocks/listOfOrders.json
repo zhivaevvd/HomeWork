@@ -2,7 +2,7 @@
     "data": {
         "orders": [
             {
-                "id": "047eae74-1efd-11ec-9621-0242ac1300025",
+                "id": "047eae74-1efd-11ec-9621-0242ac13000251488",
                 "title": "Men's Nike J.J. Watt Black Arizona Cardinals Legend Jersey",
                 "number": 1123,
                 "product_id": "455fccf6-1f03-11ec-9621-0242ac130002",
@@ -12,7 +12,7 @@
                 "created_at": "2021-08-09T18:31:42+03:00",
                 "etd": "2021-09-30T16:00:00+03:00",
                 "delivery_address": "г. Саранск, ул. Демократическая, 14",
-                "status": "in_work"
+                "status": "cancelled"
             },
             {
                 "id": "047eae174-1efd-11ec-9621-0242ac130002",
@@ -25,7 +25,7 @@
                 "created_at": "2021-08-09T18:31:42+03:00",
                 "etd": "2021-09-30T16:00:00+03:00",
                 "delivery_address": "г. Саранск, ул. Демократическая, 14",
-                "status": "cancelled"
+                "status": "in_work"
             },
             {
                 "id": "0471eae74-1efd-11ec-9621-0242ac130002",
@@ -51,7 +51,7 @@
                 "created_at": "2021-08-09T18:31:42+03:00",
                 "etd": "2021-09-30T16:00:00+03:00",
                 "delivery_address": "г. Саранск, ул. Демократическая, 14",
-                "status": "cancelled"
+                "status": "in_work"
             },
             {
                 "id": "047eae74-1efd-111ec-9621-0242ac130002",
@@ -64,7 +64,7 @@
                 "created_at": "2021-08-09T18:31:42+03:00",
                 "etd": "2021-09-30T16:00:00+03:00",
                 "delivery_address": "г. Саранск, ул. Демократическая, 14",
-                "status": "in_work"
+                "status": "cancelled"
             },
             {
                 "id": "047eae74-1e1fd-11ec-9621-0242ac130002",

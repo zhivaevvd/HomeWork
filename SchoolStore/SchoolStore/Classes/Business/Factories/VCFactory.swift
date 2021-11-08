@@ -7,9 +7,9 @@ import UIKit
 enum VCFactory {
     static func buildAuthVC() -> UIViewController? {
         let vc = StoryboardScene.Auth.initialScene.instantiate()
-        let authService = CoreFactory.buildAuthService()
+        let profileService = CoreFactory.buildProfileService()
         let snacker = CoreFactory.snacker
-        vc.setup(with: authService, snacker)
+        vc.setup(with: profileService, snacker)
         return vc
     }
 
@@ -23,9 +23,9 @@ enum VCFactory {
             switch rootVC {
             case let vc as ProfileVC:
                 let dataService = CoreFactory.dataService
-                let authService = CoreFactory.buildAuthService()
+                let profileService = CoreFactory.buildProfileService()
                 let snacker = CoreFactory.snacker
-                vc.setup(with: authService, snacker, dataService: dataService)
+                vc.setup(with: profileService, snacker, dataService: dataService)
             case let vc as HistoryVC:
                 vc.historyService = CoreFactory.buildHistoryService()
                 vc.snacker = CoreFactory.snacker
@@ -59,7 +59,7 @@ enum VCFactory {
     static func buildSettingsVC(with profile: Profile) -> UIViewController {
         let vc = SettingsVC()
         vc.profile = profile
-        vc.userService = CoreFactory.buildUserService()
+        vc.profileService = CoreFactory.buildProfileService()
         return vc
     }
     

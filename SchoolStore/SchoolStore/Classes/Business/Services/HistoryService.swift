@@ -9,9 +9,24 @@ import Foundation
 
 protocol HistoryService: AnyObject {
     func getHistoryItems(with offset: Int, limit: Int, completion: ((Result<[Order], Error>) -> Void)?)
+    func removeHistoryItem(orderId: String, completion: ((Result<String, Error>) -> Void)?)
 }
 
 final class HistoryServiceImpl: HistoryService {
+    func removeHistoryItem(orderId: String, completion: ((Result<String, Error>) -> Void)?) {
+        networkProvider.mock(OrdersRequest.cancel, completion: {
+            (result: Result<DataResponse<CancelOrder>, Error>) in
+            switch result {
+            case let .success(data):
+                let id = data.data.orderId
+                completion?(Result.success(id))
+            case let .failure(error):
+                completion?(Result.failure(error))
+            }
+        })
+    }
+    
+   
     func getHistoryItems(with offset: Int, limit: Int, completion: ((Result<[Order], Error>) -> Void)?) {
         networkProvider.mock(
             OrdersRequest.listOfOrders(offset: offset, limit: limit)

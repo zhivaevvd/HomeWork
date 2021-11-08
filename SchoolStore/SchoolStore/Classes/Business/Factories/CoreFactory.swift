@@ -13,8 +13,8 @@ enum CoreFactory {
 
     static let dataService: DataService = DataServiceImpl()
 
-    static func buildAuthService() -> AuthService {
-        AuthServiceImpl(networkProvider: Self.networkProvider, dataService: Self.dataService)
+    static func buildProfileService() -> ProfileService {
+        ProfileServiceImpl(networkProvider: Self.networkProvider, dataService: Self.dataService)
     }
 
     static func buildCatalogService() -> CatalogService {
@@ -27,9 +27,5 @@ enum CoreFactory {
     
     static func buildOrderService() -> OrderService {
         OrderServiceImpl(networkProvider: Self.networkProvider, dataService: Self.dataService)
-    }
-    
-    static func buildUserService() -> UserService {
-        UserServiceImpl(networkProvider: Self.networkProvider, dataService: Self.dataService)
     }
 }

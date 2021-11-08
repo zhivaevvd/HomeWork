@@ -122,11 +122,11 @@ final class HistoryCell: UITableViewCell {
     }()
     
     private lazy var separatorView: UIView = {
-            let view = UIView()
-            view.translatesAutoresizingMaskIntoConstraints = false
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .gray
-            return view
-        }()
+        return view
+    }()
 
     private func setup() {
         selectionStyle = .none

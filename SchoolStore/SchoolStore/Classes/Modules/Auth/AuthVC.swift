@@ -33,8 +33,8 @@ class AuthVC: UIViewController {
 
     @IBOutlet var signInButton: UIButton!
 
-    func setup(with authService: AuthService, _ snacker: Snacker) {
-        self.authService = authService
+    func setup(with profileService: ProfileService, _ snacker: Snacker) {
+        self.profileService = profileService
         self.snacker = snacker
     }
 
@@ -47,12 +47,12 @@ class AuthVC: UIViewController {
         } else if password.isEmpty {
             passwordField.error = L10n.Common.emptyField
         } else {
-            authService?.authenticate(user: user, with: password, completion: { [weak self] (result: Result<String, Error>) in
+            profileService?.authenticate(user: user, with: password, completion: { [weak self] (result: Result<String, Error>) in
                 switch result {
                 case .success:
                     self!.indicator.startAnimating()
                     self!.signInButton.setTitle("", for: .normal)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
                         UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.rootViewController = VCFactory.buildTabBarVC()
                     })
                 case let .failure(error):
@@ -67,7 +67,7 @@ class AuthVC: UIViewController {
 
     private var snacker: Snacker?
 
-    private var authService: AuthService?
+    private var profileService: ProfileService?
 
     private func handle(error: Error) {
         snacker?.show(snack: error.localizedDescription, with: .error)

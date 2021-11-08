@@ -27,6 +27,19 @@ final class SettingsView: UIView {
             return
         }
         
+        if let preview = profile.avatarUrl, let previewUrl = URL(string: preview) {
+            let contentImageResource = ImageResource(downloadURL: previewUrl, cacheKey: preview)
+            imageView.kf.setImage(with: contentImageResource, placeholder: Asset.itemPlaceholder.image, options: [
+                .transition(.fade(0.2)),
+                .forceTransition,
+                .cacheOriginalImage,
+                .keepCurrentImageWhileLoading,
+                ]
+            )
+        } else {
+            imageView.image = Asset.itemPlaceholder.image
+        }
+        
         nameTF.textField.text = profile.name
         surnameTF.textField.text = profile.surname
         occupationTF.textField.text = profile.occupation
@@ -35,22 +48,33 @@ final class SettingsView: UIView {
         surnameTF.titleLabel.isHidden = false
         occupationTF.titleLabel.isHidden = false
         
-        nameTF.title = "Имя"
-        surnameTF.title = "Фамилия"
-        occupationTF.title = "Род деятельности"
+        nameTF.title = L10n.Settings.name
+        surnameTF.title = L10n.Settings.surname
+        occupationTF.title = L10n.Settings.anotherOccupation
+        
+        guard let name = nameTF.textField.text,
+              let surname = surnameTF.textField.text,
+              let occupation = occupationTF.textField.text
+        else {
+            return
+        }
+        
+        currentInfo = ["name": name, "surname": surname, "occupation": occupation]
+        avatar = profile.avatarUrl
     }
     
-    var userService: UserService?
+    var profileService: ProfileService?
+    
+    var currentInfo: [String: String]?
     
     var viewController: UIViewController?
+    
+    var avatar: String?
     
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = Asset.imagePlaceholder.image
-        imageView.height(90).width(90)
-        imageView.backgroundColor = .systemGray5
-        imageView.layer.cornerRadius = 45
+        imageView.backgroundColor = .systemGray
         return imageView
     }()
     
@@ -68,11 +92,11 @@ final class SettingsView: UIView {
         return textField
     }()
     
-    public lazy var occupationTF: InputField = {
+    private lazy var occupationTF: InputField = {
         let textField = InputField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.layer.cornerRadius = 10
-        textField.textField.addTarget(self, action: #selector(test), for: [.allEditingEvents, .allTouchEvents])
+        textField.textField.addTarget(self, action: #selector(showBottomSheet), for: [.allEditingEvents, .allTouchEvents])
         return textField
     }()
     
@@ -83,7 +107,7 @@ final class SettingsView: UIView {
         btn.setTitle(L10n.Settings.buttonChange, for: .normal)
         btn.setTitleColor(.white, for: .normal)
         btn.layer.cornerRadius = 8
-        btn.addTarget(self, action: #selector(tapBtn), for: .touchUpInside)
+        btn.addTarget(self, action: #selector(changeButtonDidTap), for: .touchUpInside)
         return btn
     }()
     
@@ -94,6 +118,13 @@ final class SettingsView: UIView {
         return textField
     }()
     
+    private lazy var indicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .medium)
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        indicator.color = .white
+        return indicator
+    }()
+    
     private func setup() {
         addSubview(imageView)
         addSubview(nameTF)
@@ -102,10 +133,18 @@ final class SettingsView: UIView {
         addSubview(changeButton)
         
         imageView.top(50).centerX()
+        imageView.height(90).width(90)
+        imageView.layer.cornerRadius = 45
+        imageView.clipsToBounds = true
+        
         nameTF.top(to: .bottom(32), of: imageView).left(16).right(16)
         surnameTF.top(to: .bottom(32), of: nameTF).left(16).right(16)
         occupationTF.top(to: .bottom(32), of: surnameTF).left(16).right(16)
-        changeButton.left(16).right(16).bottom(16).height(44)
+        changeButton.left(16).right(16).top(to: .bottom(100), of: occupationTF).height(44)
+        changeButton.addSubview(indicator)
+        
+        indicator.topAnchor.constraint(equalTo: changeButton.topAnchor).activate()
+        indicator.centerX().centerY()
         
         let iconView = UIImageView()
         var icon = UIImage(systemName: "arrowshape.zigzag.right.fill")
@@ -119,7 +158,7 @@ final class SettingsView: UIView {
     }
     
     @objc
-    func test() {
+    func showBottomSheet() {
         let array = [
             L10n.Specialization.developer,
             L10n.Specialization.tester,
@@ -166,24 +205,40 @@ final class SettingsView: UIView {
             viewController?.presentedViewController?.dismiss(animated: true, completion: nil)
         }
    
-    //хуйня
     @objc
-    func tapBtn() {
+    func changeButtonDidTap() {
         guard let name = nameTF.textField.text,
               let surname = surnameTF.textField.text,
-              let occupation = occupationTF.textField.text
+              var occupation = occupationTF.textField.text,
+              let avatar = avatar
         else {
             return
         }
         
-        let avatar = ""
-        userService?.userChange(name: name, surname: surname, occupation: occupation, avatar: avatar, completion: {
-            (result: Result<Void, Error>) in
-            guard case .success = result else {
+        if occupation == L10n.Specialization.another {
+            guard let anotherOccupation = anotherOccupationTF.textField.text else {
                 return
             }
-            print("succ")
-        })
+            occupation = anotherOccupation
+        }
+        
+        if name != currentInfo?["name"] || surname != currentInfo?["surname"] || occupation != currentInfo?["occupation"] {
+            profileService?.userChange(name: name, surname: surname, occupation: occupation, avatar: avatar, completion: {
+                (result: Result<Void, Error>) in
+                guard case .success = result else {
+                    return
+                }
+                print("succ")
+                self.indicator.startAnimating()
+                self.changeButton.setTitle("", for: .normal)
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+                    self.viewController?.navigationController?.popToRootViewController(animated: true)
+                })
+            })
+        } else {
+            self.indicator.stopAnimating()
+        }
     }
 }
 
